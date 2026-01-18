@@ -594,8 +594,13 @@ transition: border-color 0.15s ease, box-shadow 0.15s ease;
 ```
 COLORS
 Primary:   #1E3A5F (Deep Navy)
+#0F4C81
+    .accent { fill: #58A8E0; }
+    .base   { fill: #184068; }
 Secondary: #3B82F6 (Ocean Blue)
+#93A9D1
 Accent:    #00D9FF (Electric Cyan)
+#6667AB
 Text:      #0F172A (Gray 900)
 Muted:     #475569 (Gray 600)
 Border:    #E2E8F0 (Gray 200)

@@ -364,6 +364,35 @@
       "Footer": {
         "present": true,
         "data": {
+          "organization": {
+            "fullName": "Автономная Некоммерческая Организация «Национальный центр финансовой грамотности» (АНО «НЦФГ»)",
+            "shortName": "НЦФГ"
+          },
+          "contacts": {
+            "phone": "+7 (499) 501-11-73",
+            "email": "info@finzdorov.pro",
+            "legalAddress": "125239, город Москва, б-р Матроса Железняка, 13, 31"
+          },
+          "social": [
+            {
+              "label": "ВКонтакте",
+              "href": "https://vk.com/wellfru"
+            },
+            {
+              "label": "Telegram",
+              "href": "https://t.me/wellf_club"
+            }
+          ],
+          "legalLinks": [
+            {
+              "label": "Политика конфиденциальности сайта",
+              "href": "/politika-konfidencialnosti"
+            },
+            {
+              "label": "Пользовательское соглашение",
+              "href": "/polzovatelskoe-soglashenie"
+            }
+          ],
           "legalDocuments": {
             "title": "Юридические документы",
             "items": [
@@ -388,6 +417,11 @@
                 "type": "pdf"
               }
             ]
+          },
+          "copyright": {
+            "years": "2005—2026",
+            "text": "© 2005—2026 НЦФГ",
+            "notice": "При копировании материалов сайта гиперссылка на www.ncfg.ru обязательна."
           },
           "links": []
         }
