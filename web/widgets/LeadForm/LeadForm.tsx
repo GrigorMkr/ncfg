@@ -216,7 +216,6 @@ export function LeadForm() {
         <div className="pt-2">
           <Button
             type="submit"
-            size="lg"
             className="w-full sm:w-auto"
             disabled={status === "loading"}
           >

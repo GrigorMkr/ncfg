@@ -25,7 +25,7 @@
 |------|----------|-----|-----|------------|
 | Primary | Deep Navy | `#1E3A5F` | 213° 52% 25% | Заголовки, навигация, футер |
 | Secondary | Ocean Blue | `#3B82F6` | 217° 91% 60% | Ссылки, вторичные кнопки, иконки |
-| Accent | Electric Cyan | `#00D9FF` | 187° 100% 50% | CTA-кнопки, важные элементы, hover-состояния |
+| Accent | Electric Cyan | `#58A8E0` | 187° 100% 50% | CTA-кнопки, важные элементы, hover-состояния |
 
 ### Нейтральные цвета
 
@@ -54,7 +54,7 @@
 │  ИЕРАРХИЯ ЦВЕТОВ                                            │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  Electric Cyan (#00D9FF)                                    │
+│  Electric Cyan (#58A8E0)                                    │
 │  └── ТОЛЬКО для главных CTA: «Оставить заявку»,            │
 │      «Связаться», primary buttons                           │
 │                                                             │
@@ -121,10 +121,10 @@
 ### Иерархия заголовков
 
 ```
-H1 (Hero)      — 48-60px, Bold (700), Deep Navy
-H2 (Section)   — 36-48px, Bold (700), Deep Navy
-H3 (Subsection)— 24-30px, Semibold (600), Deep Navy
-H4 (Card title)— 20-24px, Semibold (600), Gray 900
+H1 (Hero)      — 24-42px, Bold (700), White (на тёмном фоне)
+H2 (Section)   — 28-48px, Bold (700), Deep Navy
+H3 (Subsection)— 24-30px, Bold (700), Deep Navy
+H4 (Card title)— 18px, Semibold (600), Deep Navy
 Body           — 16px, Regular (400), Gray 900
 Body small     — 14px, Regular (400), Gray 600
 Caption        — 12px, Medium (500), Gray 400
@@ -132,13 +132,14 @@ Caption        — 12px, Medium (500), Gray 400
 
 ### Адаптивная типографика
 
-| Элемент | Mobile (< 768px) | Desktop (≥ 768px) |
-|---------|------------------|-------------------|
-| H1 | 36px / 40px | 48-60px / 52-64px |
-| H2 | 28px / 32px | 36-48px / 40-52px |
-| H3 | 22px / 28px | 24-30px / 32-36px |
-| Body | 16px / 24px | 16px / 24px |
-| Lead | 18px / 28px | 18-20px / 28-32px |
+| Элемент | Mobile (< 768px) | Tablet (768px+) | Desktop (1024px+) |
+|---------|------------------|-----------------|-------------------|
+| H1 (Hero) | 24px | 36px | 42px |
+| H2 (Section) | 28px | 36px | 48px |
+| H3 | 24px | 30px | 30px |
+| H4 (Card) | 18px | 18px | 18px |
+| Body | 16px | 16px | 16px |
+| Lead | 18px | 20px | 20px |
 
 ---
 
@@ -158,17 +159,22 @@ Caption        — 12px, Medium (500), Gray 400
 | `space-10` | 40px | — |
 | `space-12` | 48px | Padding секций (mobile) |
 | `space-16` | 64px | Padding секций (tablet) |
-| `space-20` | 80px | — |
-| `space-24` | 96px | Padding секций (desktop) |
+| `space-20` | 80px | **Padding секций (desktop)** |
+| `space-24` | 96px | Большие отступы (deprecated для секций) |
 | `space-32` | 128px | Большие отступы между секциями |
 
 ### Секции страницы
 
 ```
-Desktop:   py-24 (96px сверху/снизу)
+Desktop:   py-16 (64px сверху/снизу)
 Tablet:    py-16 (64px)
 Mobile:    py-12 (48px)
+
+dividerTop (смежные секции с одинаковым фоном):
+Добавляет разделительную линию border-[#E2E8F0] в начале секции
 ```
+
+> **Обновлено v0.2.4:** `dividerTop` добавляет разделитель между секциями с одинаковым фоном.
 
 ### Контейнер
 
@@ -186,12 +192,21 @@ Mobile:    py-12 (48px)
 | Токен | Значение | Применение |
 |-------|----------|------------|
 | `rounded-sm` | 4px | Badges, tags, small inputs |
-| `rounded` | 6px | Buttons (small), chips |
-| `rounded-md` | 8px | Buttons, form inputs |
-| `rounded-lg` | 12px | Cards, dropdowns |
-| `rounded-xl` | 16px | Modal, large cards |
-| `rounded-2xl` | 24px | Hero sections, feature blocks |
-| `rounded-full` | 9999px | Avatars, pills, floating buttons |
+| `rounded` | 6px | Chips |
+| `rounded-md` | 8px | Form inputs |
+| `rounded-lg` | 12px | **Buttons** (основной радиус кнопок) |
+| `rounded-xl` | 16px | **Cards** (карточки контента) |
+| `rounded-2xl` | 24px | **Sections** (блоки статистики, hero) |
+| `rounded-full` | 9999px | **Pills** (табы, аватары, floating buttons) |
+
+### Унифицированная система скруглений (v0.2.3)
+
+```
+Buttons:  rounded-lg  (12px) — все кнопки
+Cards:    rounded-xl  (16px) — карточки услуг, новостей, продуктов
+Sections: rounded-2xl (24px) — блоки статистики, hero-элементы
+Pills:    rounded-full       — табы, badges, теги
+```
 
 ---
 
@@ -226,33 +241,34 @@ transition: all 0.2s ease;
 
 #### Primary (Electric Cyan)
 ```css
-background: #00D9FF;
-color: #0F172A;
+background: #58A8E0;
+color: #FFFFFF;
 padding: 12px 24px;
-border-radius: 8px;
+border-radius: 12px;
 font-weight: 600;
 font-size: 16px;
 
 /* Hover */
-background: #00C4E6;
-box-shadow: 0 4px 12px rgba(0, 217, 255, 0.3);
+background: #4A96CC;
+box-shadow: 0 4px 12px rgba(88, 168, 224, 0.3);
 
 /* Active */
-background: #00B0CC;
+background: #3E84B8;
 transform: scale(0.98);
 ```
 
-#### Secondary (Ocean Blue outline)
+#### Secondary (Semi-transparent Ocean Blue)
 ```css
-background: transparent;
+background: rgba(59, 130, 246, 0.1);
 color: #3B82F6;
-border: 2px solid #3B82F6;
-padding: 10px 22px;
-border-radius: 8px;
+padding: 12px 24px;
+border-radius: 12px;
 
 /* Hover */
-background: rgba(59, 130, 246, 0.1);
+background: rgba(59, 130, 246, 0.2);
 ```
+
+> **Обновлено v0.2.3:** Изменили secondary-кнопку с обводки на полупрозрачный фон для более современного вида.
 
 #### Ghost (text only)
 ```css
@@ -278,15 +294,15 @@ background: rgba(59, 130, 246, 0.05);
 .card {
   background: #FFFFFF;
   border: 1px solid #F1F5F9;
-  border-radius: 12px;
-  padding: 24px;
-  transition: all 0.2s ease;
+  border-radius: 16px; /* rounded-xl */
+  padding: 20px;
+  transition: all 0.3s ease;
 }
 
 .card:hover {
   border-color: #E2E8F0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
 }
 ```
 
@@ -345,15 +361,13 @@ input::placeholder {
 ┌─────────────────────────────────────────────────────────────┐
 │  [Logo]                    Nav links           [CTA Button] │
 ├─────────────────────────────────────────────────────────────┤
+│  Background: Hero image with gradient overlay               │
+│  Gradient: from-[#1E3A5F]/90 via-[#1E3A5F]/70 to-transparent│
 │                                                             │
+│     H1: Заголовок (24-42px, White)                         │
+│     text-2xl sm:text-3xl md:text-4xl lg:text-[42px]        │
 │                                                             │
-│     H1: Заголовок (48-60px, Deep Navy)                     │
-│                                                             │
-│     Lead: Подзаголовок (18-20px, Gray 600)                 │
-│     максимум 2 строки                                       │
-│                                                             │
-│     [Primary CTA]   [Secondary CTA]                         │
-│                                                             │
+│     [Primary CTA]   [Secondary CTA (ghost white)]           │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -500,7 +514,7 @@ transition: border-color 0.15s ease, box-shadow 0.15s ease;
   /* Colors - Primary */
   --color-primary: #1E3A5F;
   --color-secondary: #3B82F6;
-  --color-accent: #00D9FF;
+  --color-accent: #58A8E0;
 
   /* Colors - Neutral */
   --color-white: #FFFFFF;
@@ -529,6 +543,7 @@ transition: border-color 0.15s ease, box-shadow 0.15s ease;
   --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
+  --space-20: 80px;
   --space-24: 96px;
 
   /* Border Radius */
@@ -599,7 +614,7 @@ Primary:   #1E3A5F (Deep Navy)
     .base   { fill: #184068; }
 Secondary: #3B82F6 (Ocean Blue)
 #93A9D1
-Accent:    #00D9FF (Electric Cyan)
+Accent:    #58A8E0 (Electric Cyan)
 #6667AB
 Text:      #0F172A (Gray 900)
 Muted:     #475569 (Gray 600)
@@ -607,23 +622,24 @@ Border:    #E2E8F0 (Gray 200)
 Background:#F8FAFC (Gray 50)
 
 TYPOGRAPHY
-H1: 48-60px / Bold / Deep Navy
-H2: 36-48px / Bold / Deep Navy
+H1 (Hero): 24-42px / Bold / White (on dark bg)
+H2 (Section): 28-48px / Bold / Deep Navy
 Body: 16px / Regular / Gray 900
 Small: 14px / Regular / Gray 600
 
 SPACING
-Section: py-12 → py-16 → py-24 (mobile → tablet → desktop)
+Section: py-12 → py-16 → py-16 (mobile → tablet → desktop)
 Cards gap: 24px
 Card padding: 24px
 
 RADIUS
-Buttons: 8px
-Cards: 12px
-Inputs: 8px
+Buttons: 12px (rounded-lg)
+Cards: 16px (rounded-xl)
+Sections: 24px (rounded-2xl)
+Pills/Tabs: full (rounded-full)
 
 BUTTONS
-Primary: bg-[#00D9FF] text-[#0F172A]
-Secondary: border-[#3B82F6] text-[#3B82F6]
+Primary: bg-[#58A8E0] text-white
+Secondary: bg-[#3B82F6]/10 text-[#3B82F6]
 Height: 44px (md), 56px (lg)
 ```

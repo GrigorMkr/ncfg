@@ -1,8 +1,8 @@
 import {
   Header,
   Hero,
+  Products,
   Services,
-  Stats,
   Partners,
   News,
   FAQ,
@@ -19,14 +19,13 @@ export default function Home() {
       <Header />
       <main>
         <Hero
-          headline={sections.Hero.data.headline}
-          lead={sections.Hero.data.lead}
+          headline="Более 20 лет помогаем клиентам разбираться в финансах — от программ для детей до федеральных инициатив"
           primaryCta={sections.Hero.data.primaryCta}
         />
-        <Stats items={sections.Stats.data.items} />
+        <Products />
         <Services
           title={sections.Services.data.title}
-          audiences={sections.Services.data.audiences}
+          tabs={sections.Services.data.tabs}
         />
         <Partners
           clientsCarousel={sections.Partners.data.clientsCarousel}
@@ -40,7 +39,7 @@ export default function Home() {
         <FAQ title={sections.FAQ.data.title} items={[]} />
         <LeadForm />
       </main>
-      <Footer legalDocuments={sections.Footer.data.legalDocuments} />
+      <Footer data={sections.Footer.data} />
     </>
   );
 }

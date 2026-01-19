@@ -9,12 +9,10 @@ import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
 
 const navigation = [
-  { label: "О нас", href: "#about" },
-  { label: "Услуги", href: "#services" },
-  { label: "Партнёры", href: "#partners" },
-  { label: "Новости", href: "#news" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Контакты", href: "#contacts" },
+  { label: "Частным лицам", href: "#" },
+  { label: "Компаниям", href: "#" },
+  { label: "Волонтерам", href: "#" },
+  { label: "Ещё", href: "#" },
 ];
 
 export function Header() {
@@ -32,17 +30,14 @@ export function Header() {
               height={40}
               className="h-10 w-10"
             />
-            <span className="hidden sm:block font-semibold text-[#1E3A5F] text-lg">
-              НЦФГ
-            </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
-            {navigation.map((item) => (
+          <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+            {navigation.map((item, index) => (
               <Link
-                key={item.href}
+                key={item.href + index}
                 href={item.href}
-                className="px-4 py-2 text-[#475569] font-medium text-sm rounded-md hover:text-[#1E3A5F] hover:bg-[rgba(30,58,95,0.05)] transition-colors"
+                className="px-3 py-2 text-[#475569] font-medium text-sm hover:text-[#1E3A5F] transition-colors"
               >
                 {item.label}
               </Link>
@@ -56,7 +51,7 @@ export function Header() {
 
             <button
               type="button"
-              className="lg:hidden p-2 text-[#475569] hover:text-[#1E3A5F] transition-colors"
+              className="md:hidden p-2 text-[#475569] hover:text-[#1E3A5F] transition-colors"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Закрыть меню" : "Открыть меню"}
             >
@@ -68,15 +63,15 @@ export function Header() {
 
       <div
         className={cn(
-          "lg:hidden overflow-hidden transition-all duration-300",
+          "md:hidden overflow-hidden transition-all duration-300",
           mobileMenuOpen ? "max-h-96" : "max-h-0"
         )}
       >
         <Container>
           <div className="py-4 border-t border-[#F1F5F9]">
-            {navigation.map((item) => (
+            {navigation.map((item, index) => (
               <Link
-                key={item.href}
+                key={item.href + index}
                 href={item.href}
                 className="block px-4 py-3 text-[#475569] font-medium hover:text-[#1E3A5F] hover:bg-[rgba(30,58,95,0.05)] rounded-md transition-colors"
                 onClick={() => setMobileMenuOpen(false)}

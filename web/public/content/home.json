@@ -25,7 +25,7 @@
           "headline": "Уже более 20 лет Национальный центр финансовой грамотности успешно реализует проекты по финансовой грамотности",
           "lead": "Проекты различного уровня сложности и масштаба: Всероссийские недели финансовой грамотности и Недели сбережений, программы на рабочих местах и в библиотеках, финансовое здоровье для женщин, финансовое воспитание для детей и родителей.",
           "primaryCta": {
-            "label": "Подробнее…",
+            "label": "Подробнее",
             "href": "/portfolio"
           },
           "supportingHeadings": [
@@ -79,69 +79,55 @@
       "Services": {
         "present": true,
         "data": {
-          "title": "Чем мы можем быть полезны?",
-          "audiences": [
+          "title": "Услуги",
+          "tabs": [
             {
-              "title": "Компаниям работодателям",
-              "valueProposition": "Запуск программы повышения финансовой грамотности для сотрудников, повышение лояльности и производительности.",
-              "cta": {
-                "label": "Подробнее…",
-                "href": "https://finzdorov.pro/corp"
-              }
+              "id": "business",
+              "label": "Компаниям",
+              "services": [
+                {
+                  "title": "Программы well-being для сотрудников",
+                  "description": "Комплексные программы финансовой грамотности для повышения лояльности и продуктивности персонала.",
+                  "href": "https://finzdorov.pro/corp",
+                  "image": "/services/well-being.png"
+                },
+                {
+                  "title": "Мероприятия для клиентов",
+                  "description": "Организация семинаров, фестивалей, марафонов и всероссийских акций для ваших клиентов.",
+                  "href": "#",
+                  "image": "/services/events.png"
+                },
+                {
+                  "title": "Разработка материалов",
+                  "description": "Создание брошюр, памяток, курсов и контента для соцсетей по финансовой тематике.",
+                  "href": "#",
+                  "image": "/services/materials-development.png"
+                }
+              ]
             },
             {
-              "title": "Физическим лицам",
-              "valueProposition": "Помощь в заботе о собственном финансовом здоровье (клуб «ФинЗдоровье» для взрослых и детей).",
-              "cta": {
-                "label": "Подробнее…",
-                "href": "https://finzdorov.pro/wellf_club"
-              }
-            },
-            {
-              "title": "Финансовым компаниям",
-              "valueProposition": "Организация мероприятий (семинары, фестивали, марафоны, всероссийские акции) и подготовка материалов (соцсети, брошюры, памятки, книги, курсы) для клиентов.",
-              "cta": {
-                "label": "Подробнее…",
-                "href": "https://finzdorov.pro/corp"
-              }
-            },
-            {
-              "title": "Органам власти",
-              "valueProposition": "Реализация социально значимых проектов по повышению благосостояния населения и профилактике бедности в России.",
-              "cta": {
-                "label": "Подробнее…",
-                "href": "http://ncfg.ru/portfolio"
-              }
-            },
-            {
-              "title": "Всем заинтересованным в повышении финансовой грамотности населения",
-              "valueProposition": "Передача опыта и наработок для дальнейшего распространения.",
-              "cta": {
-                "label": "Подробнее ...",
-                "href": "http://ncfg.ru/narabotki-ncfg-dlya-ih-dalneyshego-rasprostraneniya"
-              }
-            }
-          ],
-          "rightMenuLinks": [
-            {
-              "label": "Сервис финансового well-being для сотрудников",
-              "href": "https://fgrm.ncfg.ru/corp",
-              "iconImg": "/media/images/2021/ir1.png"
-            },
-            {
-              "label": "Клуб финансового здоровья для частных лиц",
-              "href": "https://fgrm.ncfg.ru/wellf_club",
-              "iconImg": "/media/images/2021/ir2.png"
-            },
-            {
-              "label": "Разработка материалов или проведение мероприятий для клиентов",
-              "href": "/zakazat-razrabotku-materialov-ili-provedenie-meropriyatiya-dlya-klientov",
-              "iconImg": "/media/images/2021/ir3.png"
-            },
-            {
-              "label": "Бесплатные материалы для распространения наших наработок",
-              "href": "/narabotki-ncfg-dlya-ih-dalneyshego-rasprostraneniya",
-              "iconImg": "/media/images/2021/ir4.png"
+              "id": "individuals",
+              "label": "Частным лицам",
+              "services": [
+                {
+                  "title": "Клуб «ФинЗдоровье»",
+                  "description": "Закрытый клуб для тех, кто хочет улучшить своё финансовое состояние. Вебинары, материалы, поддержка экспертов.",
+                  "href": "https://finzdorov.pro/wellf_club",
+                  "image": "/services/financial-health.png"
+                },
+                {
+                  "title": "Финансовое воспитание детей",
+                  "description": "Программы и материалы для родителей, которые хотят научить детей правильно обращаться с деньгами.",
+                  "href": "#",
+                  "image": "/services/financial-education.png"
+                },
+                {
+                  "title": "Онлайн-курсы",
+                  "description": "Самостоятельное обучение основам финансовой грамотности в удобном формате.",
+                  "href": "#",
+                  "image": "/services/online-courses.png"
+                }
+              ]
             }
           ]
         }
@@ -267,18 +253,12 @@
                 }
               },
               {
-                "name": "Государственные заказчики и общественные организации",
+                "name": "Государственные заказчики",
                 "logos": [
                   { "title": "Минфин России", "href": "/rekomendacii/26", "img": "/data/clients/26/image.png" },
                   { "title": "Центральный банк Российской Федерации", "href": "/rekomendacii/27", "img": "/data/clients/27/image.png" },
-                  { "title": "Российский союз промышленников и предпринимателей", "href": "/rekomendacii/28", "img": "/data/clients/28/image.png" },
-                  { "title": "Фонд развития моногородов", "href": "/rekomendacii/29", "img": "/data/clients/29/image.png" },
-                  { "title": "АНО «Развитие человеческого капитала»", "href": "/rekomendacii/30", "img": "/data/clients/30/image.png" },
-                  { "title": "Детский фонд Виктория", "href": "/rekomendacii/31", "img": "/data/clients/31/image.png" },
-                  { "title": "Лидеры России", "href": "/rekomendacii/32", "img": "/data/clients/32/image.png" },
                   { "title": "Министерство финансов Чувашия", "href": "/rekomendacii/40", "img": "/data/clients/40/image.png" },
                   { "title": "Администрация Хабаровска", "href": "/rekomendacii/41", "img": "/data/clients/41/image.png" },
-                  { "title": "Международный форум лидеров бизнеса", "href": "/rekomendacii/42", "img": "/data/clients/42/image.png" },
                   { "title": "Министерство финансов Республики Башкортостан", "href": "/rekomendacii/43", "img": "/data/clients/43/image.png" },
                   { "title": "Правительство Ярославской области", "href": "/rekomendacii/44", "img": "/data/clients/44/image.png" }
                 ],
@@ -286,6 +266,22 @@
                   "display": "+ 43 региона",
                   "value": 43,
                   "unit": "region"
+                }
+              },
+              {
+                "name": "Общественные организации",
+                "logos": [
+                  { "title": "Российский союз промышленников и предпринимателей", "href": "/rekomendacii/28", "img": "/data/clients/28/image.png" },
+                  { "title": "Фонд развития моногородов", "href": "/rekomendacii/29", "img": "/data/clients/29/image.png" },
+                  { "title": "АНО «Развитие человеческого капитала»", "href": "/rekomendacii/30", "img": "/data/clients/30/image.png" },
+                  { "title": "Детский фонд Виктория", "href": "/rekomendacii/31", "img": "/data/clients/31/image.png" },
+                  { "title": "Лидеры России", "href": "/rekomendacii/32", "img": "/data/clients/32/image.png" },
+                  { "title": "Международный форум лидеров бизнеса", "href": "/rekomendacii/42", "img": "/data/clients/42/image.png" }
+                ],
+                "more": {
+                  "display": "+ 50 организаций",
+                  "value": 50,
+                  "unit": "organization"
                 }
               },
               {

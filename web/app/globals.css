@@ -4,7 +4,7 @@
   /* Colors - Primary */
   --color-primary: #1E3A5F;
   --color-secondary: #3B82F6;
-  --color-accent: #00D9FF;
+  --color-accent: #58A8E0;
 
   /* Colors - Neutral */
   --color-white: #FFFFFF;
@@ -33,6 +33,7 @@
   --space-8: 32px;
   --space-12: 48px;
   --space-16: 64px;
+  --space-20: 80px;
   --space-24: 96px;
 
   /* Border Radius */

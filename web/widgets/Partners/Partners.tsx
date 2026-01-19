@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Section } from "@/shared/ui/Section";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
@@ -66,7 +66,7 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
               "px-4 py-2 text-sm font-medium rounded-full transition-colors",
               activeCategory === index
                 ? "bg-[#1E3A5F] text-white"
-                : "bg-[#F8FAFC] text-[#475569] hover:bg-[#F1F5F9]"
+                : "bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F1F5F9]"
             )}
           >
             {category.name}
@@ -89,14 +89,10 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
       </div>
 
       <div className="text-center mb-12">
-        <span className="text-[#3B82F6] font-semibold">
-          {currentCategory.more.display}
-        </span>
-        <div className="mt-4">
-          <Button href={clientsCarousel.archiveCta.href} variant="secondary" size="sm">
-            {clientsCarousel.archiveCta.label}
-          </Button>
-        </div>
+        <Button href={clientsCarousel.archiveCta.href} variant="secondary">
+          Все клиенты
+          <ArrowRight size={18} className="ml-2" />
+        </Button>
       </div>
 
       <div className="border-t border-[#F1F5F9] pt-12">
@@ -107,7 +103,7 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
         {testimonials.items.length > 0 && (
           <div className="relative max-w-3xl mx-auto">
             <div className="bg-[#F8FAFC] rounded-2xl p-6 md:p-8">
-              <Quote className="w-10 h-10 text-[#00D9FF] mb-4" />
+              <Quote className="w-10 h-10 text-[#58A8E0] mb-4" />
               <blockquote className="text-[#475569] text-lg leading-relaxed mb-6">
                 {currentTestimonial.quote}
               </blockquote>
@@ -142,8 +138,9 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
             )}
 
             <div className="text-center mt-6">
-              <Button href={testimonials.more.href} variant="ghost" size="sm">
-                {testimonials.more.labelTop} {testimonials.more.labelBottom} →
+              <Button href={testimonials.more.href} variant="secondary">
+                Все отзывы
+                <ArrowRight size={18} className="ml-2" />
               </Button>
             </div>
           </div>
