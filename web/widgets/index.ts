@@ -1,6 +1,8 @@
 export { Header } from "./Header";
 export { Hero } from "./Hero";
+export { HeroIndividuals } from "./HeroIndividuals";
 export { Products } from "./Products";
+export { ProductShowcase } from "./ProductShowcase";
 export { Services } from "./Services";
 export { Stats } from "./Stats";
 export { Partners } from "./Partners";

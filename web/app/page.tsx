@@ -31,13 +31,13 @@ export default function Home() {
           clientsCarousel={sections.Partners.data.clientsCarousel}
           testimonials={sections.Partners.data.testimonials}
         />
+        <LeadForm />
+        <FAQ title={sections.FAQ.data.title} items={[]} />
         <News
           title={sections.News.data.title}
           items={[]}
           archiveHref={sections.News.data.links[0]?.href}
         />
-        <FAQ title={sections.FAQ.data.title} items={[]} />
-        <LeadForm />
       </main>
       <Footer data={sections.Footer.data} />
     </>

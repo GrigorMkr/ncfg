@@ -9,7 +9,7 @@ import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
 
 const navigation = [
-  { label: "Частным лицам", href: "#" },
+  { label: "Частным лицам", href: "/individuals" },
   { label: "Компаниям", href: "#" },
   { label: "Волонтерам", href: "#" },
   { label: "Ещё", href: "#" },

@@ -121,7 +121,7 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
                     )
                   }
                   className="p-2 rounded-full bg-white border border-[#E2E8F0] hover:border-[#3B82F6] hover:text-[#3B82F6] transition-colors"
-                  aria-label="Предыдущий отзыв"
+                  aria-label="Предыдущая рекомендация"
                 >
                   <ChevronLeft size={20} />
                 </button>
@@ -130,7 +130,7 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
                     setActiveTestimonial((prev) => (prev + 1) % testimonials.items.length)
                   }
                   className="p-2 rounded-full bg-white border border-[#E2E8F0] hover:border-[#3B82F6] hover:text-[#3B82F6] transition-colors"
-                  aria-label="Следующий отзыв"
+                  aria-label="Следующая рекомендация"
                 >
                   <ChevronRight size={20} />
                 </button>
@@ -139,7 +139,7 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
 
             <div className="text-center mt-6">
               <Button href={testimonials.more.href} variant="secondary">
-                Все отзывы
+                Все рекомендации
                 <ArrowRight size={18} className="ml-2" />
               </Button>
             </div>
