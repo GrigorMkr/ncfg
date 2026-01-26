@@ -10,7 +10,7 @@ import { cn } from "@/shared/lib/cn";
 
 const navigation = [
   { label: "Частным лицам", href: "/individuals" },
-  { label: "Компаниям", href: "#" },
+  { label: "Компаниям", href: "/companies" },
   { label: "Волонтерам", href: "#" },
   { label: "Ещё", href: "#" },
 ];

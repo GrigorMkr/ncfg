@@ -26,7 +26,7 @@
           "lead": "Проекты различного уровня сложности и масштаба: Всероссийские недели финансовой грамотности и Недели сбережений, программы на рабочих местах и в библиотеках, финансовое здоровье для женщин, финансовое воспитание для детей и родителей.",
           "primaryCta": {
             "label": "Подробнее",
-            "href": "/portfolio"
+            "href": "#products"
           },
           "supportingHeadings": [
             "Почему мы №1 в реализации проектов и сервисов по финансовой грамотности?",
@@ -201,14 +201,14 @@
             }
           ],
           "clientsCarousel": {
-            "title": "Наши клиенты",
+            "title": "Партнеры",
             "archiveCta": {
               "label": "ВСЕ КЛИЕНТЫ",
               "href": "/klienty-partnery"
             },
             "categories": [
               {
-                "name": "Работодатели",
+                "name": "Бизнес",
                 "logos": [
                   { "title": "Superjob", "href": null, "img": "/data/clients/48/image.png" },
                   { "title": "UNILEVER", "href": "/rekomendacii/46", "img": "/data/clients/46/image.png" },
@@ -228,7 +228,7 @@
                 }
               },
               {
-                "name": "Финансовые организации",
+                "name": "Финансы",
                 "logos": [
                   { "title": "Райффайзенбанк", "href": "/rekomendacii/45", "img": "/data/clients/45/image.png" },
                   { "title": "Сбербанк", "href": "/rekomendacii/12", "img": "/data/clients/12/image.png" },
@@ -253,7 +253,7 @@
                 }
               },
               {
-                "name": "Государственные заказчики",
+                "name": "Госсектор",
                 "logos": [
                   { "title": "Минфин России", "href": "/rekomendacii/26", "img": "/data/clients/26/image.png" },
                   { "title": "Центральный банк Российской Федерации", "href": "/rekomendacii/27", "img": "/data/clients/27/image.png" },
@@ -269,7 +269,7 @@
                 }
               },
               {
-                "name": "Общественные организации",
+                "name": "Образование",
                 "logos": [
                   { "title": "Российский союз промышленников и предпринимателей", "href": "/rekomendacii/28", "img": "/data/clients/28/image.png" },
                   { "title": "Фонд развития моногородов", "href": "/rekomendacii/29", "img": "/data/clients/29/image.png" },
@@ -285,7 +285,7 @@
                 }
               },
               {
-                "name": "Образовательные организации и СМИ",
+                "name": "Медиа",
                 "logos": [
                   { "title": "Финансовый университет РФ", "href": null, "img": "/data/clients/33/image.png" },
                   { "title": "Фоксфорд", "href": null, "img": "/data/clients/34/image.png" },

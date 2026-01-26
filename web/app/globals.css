@@ -108,6 +108,17 @@
   --radius-xl: var(--radius-xl);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Header height (h-16=64px mobile, h-20=80px desktop) + small buffer */
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 64px;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

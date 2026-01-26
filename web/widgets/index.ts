@@ -1,9 +1,11 @@
 export { Header } from "./Header";
 export { Hero } from "./Hero";
 export { HeroIndividuals } from "./HeroIndividuals";
+export { HeroCompanies } from "./HeroCompanies";
 export { Products } from "./Products";
 export { ProductShowcase } from "./ProductShowcase";
 export { Services } from "./Services";
+export { ServiceCatalog } from "./ServiceCatalog";
 export { Stats } from "./Stats";
 export { Partners } from "./Partners";
 export { News } from "./News";

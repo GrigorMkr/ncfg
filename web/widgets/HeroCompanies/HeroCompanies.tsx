@@ -1,7 +1,7 @@
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
 
-interface HeroIndividualsProps {
+interface HeroCompaniesProps {
   headline: string;
   lead?: string;
   primaryCta?: {
@@ -10,11 +10,11 @@ interface HeroIndividualsProps {
   };
 }
 
-export function HeroIndividuals({ headline, lead, primaryCta }: HeroIndividualsProps) {
+export function HeroCompanies({ headline, lead, primaryCta }: HeroCompaniesProps) {
   return (
     <section
       className="relative min-h-[400px] md:min-h-[500px] flex items-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/client.png')" }}
+      style={{ backgroundImage: "url('/company.png')" }}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A5F]/90 via-[#1E3A5F]/70 to-transparent" />
 
@@ -34,7 +34,7 @@ export function HeroIndividuals({ headline, lead, primaryCta }: HeroIndividualsP
                 {primaryCta.label}
               </Button>
             )}
-            <Button href="#products" variant="secondary" size="lg" className="!bg-transparent border-2 border-white text-white hover:bg-white/10">
+            <Button href="#services" variant="secondary" size="lg" className="!bg-transparent border-2 border-white text-white hover:bg-white/10">
               Подробнее
             </Button>
           </div>
