@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
@@ -11,17 +12,21 @@ import { cn } from "@/shared/lib/cn";
 const navigation = [
   { label: "Частным лицам", href: "/individuals" },
   { label: "Компаниям", href: "/companies" },
-  { label: "Волонтерам", href: "#" },
+  { label: "Блог", href: "/blog" },
   { label: "Ещё", href: "#" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // On blog pages there's no lead form — navigate to homepage
+  const ctaHref = pathname?.startsWith("/blog") ? "/#lead-form" : "#lead-form";
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#F1F5F9]">
       <Container>
-        <nav className="flex items-center justify-between h-16 md:h-20">
+        <nav className="flex items-center h-16 md:h-20">
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <Image
               src="/logo.svg"
@@ -32,20 +37,23 @@ export function Header() {
             />
           </Link>
 
-          <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+          <div className="hidden md:flex items-center gap-1 ml-4">
             {navigation.map((item, index) => (
               <Link
                 key={item.href + index}
                 href={item.href}
-                className="px-3 py-2 text-[#475569] font-medium text-sm hover:text-[#1E3A5F] transition-colors"
+                className="px-4 py-2 text-[#475569] font-medium text-base hover:text-[#1E3A5F] transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button href="#lead-form" size="sm" className="hidden sm:inline-flex">
+          <div className="flex items-center gap-3 ml-auto">
+            <Button
+              href={ctaHref}
+              className="hidden sm:inline-flex h-10 px-6 text-sm md:h-11 md:px-7 md:text-base"
+            >
               Оставить заявку
             </Button>
 
@@ -80,7 +88,7 @@ export function Header() {
               </Link>
             ))}
             <div className="mt-4 px-4 sm:hidden">
-              <Button href="#lead-form" className="w-full">
+              <Button href={ctaHref} className="w-full h-11 text-base">
                 Оставить заявку
               </Button>
             </div>

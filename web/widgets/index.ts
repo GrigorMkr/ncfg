@@ -11,4 +11,6 @@ export { Partners } from "./Partners";
 export { News } from "./News";
 export { FAQ } from "./FAQ";
 export { LeadForm } from "./LeadForm";
+export { BlogPosts } from "./BlogPosts";
+export { Post } from "./Post";
 export { Footer } from "./Footer";
