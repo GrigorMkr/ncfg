@@ -65,7 +65,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
-        <Post post={post} />
+        <Post post={post} allPosts={blogData.posts as BlogPost[]} />
       </main>
       <Footer data={sections.Footer.data} />
     </div>
