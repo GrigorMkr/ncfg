@@ -1,0 +1,423 @@
+{
+  "meta": {
+    "contentType": "page-home",
+    "locale": "ru",
+    "slug": "home",
+    "updatedAt": "2026-01-31",
+    "source": "provided_html_fragment"
+  },
+  "sections": {
+    "Header": {
+      "present": false,
+      "data": {
+        "brand": {
+          "name": "Национальный центр финансовой грамотности",
+          "short": "НЦФГ"
+        },
+        "navigation": [],
+        "ctas": []
+      }
+    },
+    "Hero": {
+      "present": true,
+      "data": {
+        "headline": "Уже более 20 лет Национальный центр финансовой грамотности успешно реализует проекты по финансовой грамотности",
+        "lead": "Проекты различного уровня сложности и масштаба: Всероссийские недели финансовой грамотности и Недели сбережений, программы на рабочих местах и в библиотеках, финансовое здоровье для женщин, финансовое воспитание для детей и родителей.",
+        "primaryCta": {
+          "label": "Подробнее",
+          "href": "#products"
+        },
+        "supportingHeadings": [
+          "Почему мы №1 в реализации проектов и сервисов по финансовой грамотности?",
+          "Чем мы можем быть полезны?"
+        ],
+        "proofPoints": [
+          {
+            "strong": true,
+            "text": "30 000 000 россиян приняли участие в мероприятиях, организованных НЦФГ по всей России",
+            "links": [
+              {
+                "label": "Узнать больше о наших проектах..",
+                "href": "/portfolio"
+              }
+            ]
+          },
+          {
+            "strong": true,
+            "text": "Программы показывают стабильно высокие результаты (пример: 90% считают полезной, 85% — простой и понятной; улучшение тестирования в 2 раза; 9 из 10 готовы рекомендовать)",
+            "links": [
+              {
+                "label": "Подробнее..",
+                "href": "/rekomendacii"
+              }
+            ]
+          },
+          {
+            "strong": true,
+            "text": "Клиенты рекомендуют: Минфин России, Сбербанк, «Почта Банк», «Мир», Финансовый университет РФ и др.; доверяют заботу о финансовом здоровье сотрудников более 2000 работодателей",
+            "links": [
+              {
+                "label": "Подробнее ...",
+                "href": "/klienty-partnery"
+              }
+            ]
+          },
+          {
+            "strong": true,
+            "text": "О нас регулярно говорят СМИ; более 3 000 публикаций",
+            "links": [
+              {
+                "label": "Архив публикаций...",
+                "href": "/news"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "Services": {
+      "present": true,
+      "data": {
+        "title": "Услуги",
+        "services": [
+          {
+            "id": "employee_wellbeing",
+            "title": "Программы финансового благополучия для сотрудников компаний",
+            "description": "Комплексные решения для развития финансовой культуры",
+            "href": "/companies",
+            "image": null
+          },
+          {
+            "id": "educational_materials",
+            "title": "Методические и образовательные материалы",
+            "description": "Контент для обучения и информирования",
+            "href": "/companies",
+            "image": null
+          },
+          {
+            "id": "events_talks",
+            "title": "Мероприятия и публичные выступления",
+            "description": "Организация событий и экспертные выступления",
+            "href": "/companies",
+            "image": null
+          }
+        ]
+      }
+    },
+    "Stats": {
+      "present": true,
+      "data": {
+        "items": [
+          {
+            "id": "since",
+            "key": "since",
+            "label": "года",
+            "displayValue": "с 2005",
+            "value": 2005
+          },
+          {
+            "id": "corporate_clients",
+            "key": "corporate_clients",
+            "label": "довольных корпоративных клиента",
+            "displayValue": "3 502",
+            "value": 3502
+          },
+          {
+            "id": "nps",
+            "key": "nps",
+            "label": "NPS программ",
+            "displayValue": "9,63",
+            "value": 9.63
+          },
+          {
+            "id": "participants",
+            "key": "participants",
+            "label": "участников мероприятий",
+            "displayValue": "30,2 млн",
+            "value": 30200000
+          },
+          {
+            "id": "regions",
+            "key": "regions",
+            "label": "региона участвуют в проектах",
+            "displayValue": "84",
+            "value": 84
+          },
+          {
+            "id": "consultants",
+            "key": "consultants",
+            "label": "консультантов по всей России",
+            "displayValue": "1 248",
+            "value": 1248
+          }
+        ]
+      }
+    },
+    "Partners": {
+      "present": true,
+      "data": {
+        "awards": [
+          {
+            "id": 1,
+            "title": "HR-проект в государственных и муниципальных организациях",
+            "year": 2020,
+            "img": "/awards/hr-project-2020.png"
+          },
+          {
+            "id": 2,
+            "title": "Gold Quill",
+            "year": 2017,
+            "img": "/awards/gold-quill-2017.png"
+          },
+          {
+            "id": 3,
+            "title": "SABRE Awards",
+            "year": 2017,
+            "img": "/awards/sabre-2017.png"
+          },
+          {
+            "id": 4,
+            "title": "Global Inclusion Awards",
+            "year": 2016,
+            "img": "/awards/global-inclusion-2016.png"
+          }
+        ],
+        "clientsCarousel": {
+          "title": "Партнеры",
+          "archiveCta": {
+            "label": "ВСЕ КЛИЕНТЫ",
+            "href": "/klienty-partnery"
+          },
+          "categories": [
+            {
+              "id": "business",
+              "name": "Бизнес",
+              "logos": [
+                { "id": 48, "title": "Superjob", "href": null, "img": "/data/clients/48/image.png" },
+                { "id": 46, "title": "UNILEVER", "href": "/rekomendacii/46", "img": "/data/clients/46/image.png" },
+                { "id": 2, "title": "Лента", "href": "/rekomendacii/2", "img": "/data/clients/2/image.png" },
+                { "id": 3, "title": "Шнейдер", "href": "/rekomendacii/3", "img": "/data/clients/3/image.png" },
+                { "id": 6, "title": "ИКЕА", "href": "/rekomendacii/6", "img": "/data/clients/6/image.png" },
+                { "id": 7, "title": "Mars", "href": "/rekomendacii/7", "img": "/data/clients/7/image.png" },
+                { "id": 8, "title": "AB InBev Efes", "href": "/rekomendacii/8", "img": "/data/clients/8/image.png" },
+                { "id": 9, "title": "Saint-Gobian", "href": "/rekomendacii/9", "img": "/data/clients/9/image.png" },
+                { "id": 10, "title": "Киа Моторс", "href": "/rekomendacii/10", "img": "/data/clients/10/image.png" },
+                { "id": 11, "title": "ПанасоникРус", "href": "/rekomendacii/11", "img": "/data/clients/11/image.png" }
+              ],
+              "more": {
+                "display": "+ 1 711 компания",
+                "value": 1711,
+                "unit": "company"
+              }
+            },
+            {
+              "id": "finance",
+              "name": "Финансы",
+              "logos": [
+                { "id": 45, "title": "Райффайзенбанк", "href": "/rekomendacii/45", "img": "/data/clients/45/image.png" },
+                { "id": 12, "title": "Сбербанк", "href": "/rekomendacii/12", "img": "/data/clients/12/image.png" },
+                { "id": 13, "title": "Почта банк", "href": null, "img": "/data/clients/13/image.png" },
+                { "id": 14, "title": "ХоумКредбанк", "href": null, "img": "/data/clients/14/image.png" },
+                { "id": 15, "title": "ЭРГО жизнь", "href": null, "img": "/data/clients/15/image.png" },
+                { "id": 16, "title": "Мир", "href": null, "img": "/data/clients/16/image.png" },
+                { "id": 17, "title": "Visa", "href": null, "img": "/data/clients/17/image.png" },
+                { "id": 18, "title": "Мастер кард", "href": null, "img": "/data/clients/18/image.png" },
+                { "id": 19, "title": "Росгосстрах", "href": "/rekomendacii/19", "img": "/data/clients/19/image.png" },
+                { "id": 20, "title": "Райфайзен", "href": null, "img": "/data/clients/20/image.png" },
+                { "id": 21, "title": "HSBC", "href": "/rekomendacii/21", "img": "/data/clients/21/image.png" },
+                { "id": 22, "title": "МТС Банк", "href": "/rekomendacii/22", "img": "/data/clients/22/image.png" },
+                { "id": 23, "title": "МДМ Банк", "href": "/rekomendacii/23", "img": "/data/clients/23/image.png" },
+                { "id": 24, "title": "ВСК", "href": "/rekomendacii/24", "img": "/data/clients/24/image.png" },
+                { "id": 25, "title": "Нордеа Банк", "href": "/rekomendacii/25", "img": "/data/clients/25/image.png" }
+              ],
+              "more": {
+                "display": "+ 123 компании",
+                "value": 123,
+                "unit": "company"
+              }
+            },
+            {
+              "id": "government",
+              "name": "Госсектор",
+              "logos": [
+                { "id": 26, "title": "Минфин России", "href": "/rekomendacii/26", "img": "/data/clients/26/image.png" },
+                { "id": 27, "title": "Центральный банк Российской Федерации", "href": "/rekomendacii/27", "img": "/data/clients/27/image.png" },
+                { "id": 40, "title": "Министерство финансов Чувашия", "href": "/rekomendacii/40", "img": "/data/clients/40/image.png" },
+                { "id": 41, "title": "Администрация Хабаровска", "href": "/rekomendacii/41", "img": "/data/clients/41/image.png" },
+                { "id": 43, "title": "Министерство финансов Республики Башкортостан", "href": "/rekomendacii/43", "img": "/data/clients/43/image.png" },
+                { "id": 44, "title": "Правительство Ярославской области", "href": "/rekomendacii/44", "img": "/data/clients/44/image.png" }
+              ],
+              "more": {
+                "display": "+ 43 региона",
+                "value": 43,
+                "unit": "region"
+              }
+            },
+            {
+              "id": "education",
+              "name": "Образование",
+              "logos": [
+                { "id": 28, "title": "Российский союз промышленников и предпринимателей", "href": "/rekomendacii/28", "img": "/data/clients/28/image.png" },
+                { "id": 29, "title": "Фонд развития моногородов", "href": "/rekomendacii/29", "img": "/data/clients/29/image.png" },
+                { "id": 30, "title": "АНО «Развитие человеческого капитала»", "href": "/rekomendacii/30", "img": "/data/clients/30/image.png" },
+                { "id": 31, "title": "Детский фонд Виктория", "href": "/rekomendacii/31", "img": "/data/clients/31/image.png" },
+                { "id": 32, "title": "Лидеры России", "href": "/rekomendacii/32", "img": "/data/clients/32/image.png" },
+                { "id": 42, "title": "Международный форум лидеров бизнеса", "href": "/rekomendacii/42", "img": "/data/clients/42/image.png" }
+              ],
+              "more": {
+                "display": "+ 50 организаций",
+                "value": 50,
+                "unit": "organization"
+              }
+            },
+            {
+              "id": "media",
+              "name": "Медиа",
+              "logos": [
+                { "id": 33, "title": "Финансовый университет РФ", "href": null, "img": "/data/clients/33/image.png" },
+                { "id": 34, "title": "Фоксфорд", "href": null, "img": "/data/clients/34/image.png" },
+                { "id": 35, "title": "Инфоурок", "href": null, "img": "/data/clients/35/image.png" },
+                { "id": 36, "title": "Дневник.ру", "href": null, "img": "/data/clients/36/image.png" },
+                { "id": 37, "title": "Якласс", "href": null, "img": "/data/clients/37/image.png" },
+                { "id": 38, "title": "Первый канал", "href": "/rekomendacii/38", "img": "/data/clients/38/image.png" },
+                { "id": 39, "title": "Домашний очаг", "href": null, "img": "/data/clients/39/image.png" }
+              ],
+              "more": {
+                "display": "+ 1567 школ, вузов и тп.",
+                "value": 1567,
+                "unit": "institution"
+              }
+            }
+          ]
+        },
+        "testimonials": {
+          "title": "Рекомендации",
+          "items": [
+            {
+              "id": 1,
+              "company": "МТС Банк",
+              "logoImg": "/data/clients/22/image.png",
+              "quote": "«ПАО «МТС Банк» благодарит коллектив Национального центра финансовой грамотности за высокий уровень профессионализма в организации проектов «V Всероссийская неделя финансовой грамотности для детей и молодежи» и «VI Всероссийская неделя сбережений» для взрослого населения. Мы высоко ценим надежные партнерские связи, сложившиеся за время нашего плодотворного сотрудничества».",
+              "sourceLink": null
+            },
+            {
+              "id": 2,
+              "company": "Mars",
+              "logoImg": "/data/clients/7/image.png",
+              "quote": "«На данный момент наша задача — сделать доступным данное обучение абсолютно для всех наших сотрудников, включая тех, кто работает на фабриках. Мы ищем подходящий канал коммуникации данных материалов и тестируем разные форматы обучения, с фокусом на онлайн. Есть очень большой интерес к этой теме, особенно к блоку про инвестирование. Поэтому мы обязательно будем продолжать повышать уровень финансовой грамотности наших сотрудников».",
+              "sourceLink": null
+            }
+          ],
+          "more": {
+            "labelTop": "+ 33",
+            "labelBottom": "рекомендации",
+            "href": "/rekomendacii",
+            "value": 33
+          }
+        }
+      }
+    },
+    "News": {
+      "present": false,
+      "data": {
+        "title": "Новости",
+        "teaser": "В тексте упоминается более 3 000 публикаций в СМИ и ссылка на архив публикаций.",
+        "links": [
+          {
+            "label": "Архив публикаций...",
+            "href": "/news"
+          }
+        ],
+        "items": []
+      }
+    },
+    "FAQ": {
+      "present": false,
+      "data": {
+        "title": "FAQ",
+        "items": []
+      }
+    },
+    "LeadForm": {
+      "present": false,
+      "data": {
+        "title": "Оставить заявку",
+        "fields": [],
+        "cta": null
+      }
+    },
+    "Footer": {
+      "present": true,
+      "data": {
+        "organization": {
+          "fullName": "Автономная Некоммерческая Организация «Национальный центр финансовой грамотности» (АНО «НЦФГ»)",
+          "shortName": "НЦФГ"
+        },
+        "contacts": {
+          "phone": "+7 (499) 501-11-73",
+          "email": "info@finzdorov.pro",
+          "legalAddress": "125239, город Москва, б-р Матроса Железняка, 13, 31"
+        },
+        "social": [
+          {
+            "id": "vk",
+            "label": "ВКонтакте",
+            "href": "https://vk.com/wellfru"
+          },
+          {
+            "id": "telegram",
+            "label": "Telegram",
+            "href": "https://t.me/wellf_club"
+          }
+        ],
+        "legalLinks": [
+          {
+            "id": "privacy",
+            "label": "Политика конфиденциальности сайта",
+            "href": "/politika-konfidencialnosti"
+          },
+          {
+            "id": "terms",
+            "label": "Пользовательское соглашение",
+            "href": "/polzovatelskoe-soglashenie"
+          }
+        ],
+        "legalDocuments": {
+          "title": "Юридические документы",
+          "items": [
+            {
+              "id": 1,
+              "label": "Карточка реквизитов АНО НЦФГ",
+              "href": "/docs/kartochka-kompanii-ncfg.docx",
+              "type": "docx"
+            },
+            {
+              "id": 2,
+              "label": "Устав АНО НЦФГ",
+              "href": "/docs/ustav-ncfg.pdf",
+              "type": "pdf"
+            },
+            {
+              "id": 3,
+              "label": "Свидетельство о госрегистрации",
+              "href": "/docs/svidetelstvo-gosregistracii.pdf",
+              "type": "pdf"
+            },
+            {
+              "id": 4,
+              "label": "Свидетельство о постановке на учет в налоговом органе",
+              "href": "/docs/svidetelstvo-nalog.pdf",
+              "type": "pdf"
+            }
+          ]
+        },
+        "copyright": {
+          "years": "2005—2026",
+          "text": "© 2005—2026 НЦФГ",
+          "notice": "При копировании материалов сайта гиперссылка на www.ncfg.ru обязательна."
+        },
+        "links": []
+      }
+    }
+  }
+}

@@ -1,0 +1,100 @@
+# ===================
+# Dependencies
+# ===================
+node_modules/
+.pnpm-store/
+
+# ===================
+# Build outputs
+# ===================
+# Next.js
+.next/
+out/
+
+# Strapi
+.strapi/
+build/
+dist/
+
+# TypeScript
+*.tsbuildinfo
+.tsbuildinfo
+
+# ===================
+# Environment files
+# ===================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+!.env.example
+!.env.*.example
+
+# ===================
+# Logs
+# ===================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ===================
+# Runtime & Cache
+# ===================
+.tmp/
+.cache/
+.turbo/
+.vercel/
+
+# ===================
+# Testing
+# ===================
+coverage/
+.nyc_output/
+
+# ===================
+# IDE & Editors
+# ===================
+.idea/
+*.swp
+*.swo
+*~
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ===================
+# OS files
+# ===================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ===================
+# Strapi specific
+# ===================
+exports/
+.strapi-updater.json
+license.txt
+
+# ===================
+# Misc
+# ===================
+*.pem
+*.local
+
+# Debug
+.debug.log
+debug.log
+
+# Sentry
+.sentryclirc

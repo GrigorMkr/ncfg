@@ -6,6 +6,7 @@ export { Products } from "./Products";
 export { ProductShowcase } from "./ProductShowcase";
 export { Services } from "./Services";
 export { ServiceCatalog } from "./ServiceCatalog";
+export { Stats } from "./Stats";
 export { Partners } from "./Partners";
 export { News } from "./News";
 export { FAQ } from "./FAQ";
