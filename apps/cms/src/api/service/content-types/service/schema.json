@@ -1,0 +1,128 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service",
+    "description": "Services offered by NCFG"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "serviceId": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["published", "draft"],
+      "default": "draft"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "fullDescription": {
+      "type": "richtext"
+    },
+    "benefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "facts": {
+      "type": "component",
+      "repeatable": false,
+      "component": "service.service-facts"
+    },
+    "methodology": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.methodology-item"
+    },
+    "howWeWork": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "deliveryFormats": {
+      "type": "json"
+    },
+    "topicsExample": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "recommendedFrequency": {
+      "type": "text"
+    },
+    "configurationNotes": {
+      "type": "text"
+    },
+    "mechanics": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "rewards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "otherFormats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "formats": {
+      "type": "json"
+    },
+    "options": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "includes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.text-item"
+    },
+    "products": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.product-item"
+    },
+    "examples": {
+      "type": "component",
+      "repeatable": true,
+      "component": "service.service-example"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.call-to-action"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::service-category.service-category",
+      "inversedBy": "services"
+    }
+  }
+}

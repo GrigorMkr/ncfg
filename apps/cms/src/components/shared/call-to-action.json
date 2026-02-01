@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_shared_call_to_actions",
+  "info": {
+    "displayName": "Call to Action",
+    "description": "CTA button configuration",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["form", "link", "email", "phone"],
+      "default": "form"
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 500
+    }
+  }
+}

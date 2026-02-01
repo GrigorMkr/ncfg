@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_service_service_examples",
+  "info": {
+    "displayName": "Service Example",
+    "description": "Example of service in action",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "exampleId": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["link", "fact", "presentation", "custom"]
+    },
+    "link": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "description": {
+      "type": "text"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "durationMinutes": {
+      "type": "string",
+      "maxLength": 50
+    }
+  }
+}
