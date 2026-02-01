@@ -18,11 +18,9 @@ interface ServicesProps {
 function ServiceCard({ service }: { service: Service }) {
   return (
     <article className="group bg-white rounded-xl overflow-hidden border border-[#F1F5F9] hover:border-[#E2E8F0] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
-      {/* Stub image like News section */}
       <div className="aspect-[16/9] bg-gradient-to-br from-[#1E3A5F] to-[#3B82F6] flex items-center justify-center">
         <span className="text-white/20 text-5xl font-bold">НЦФГ</span>
       </div>
-
       <div className="p-5 flex flex-col flex-1">
         <h3 className="text-lg font-semibold text-[#1E3A5F] mb-2">
           {service.title}
@@ -50,7 +48,6 @@ function OtherServicesCard({ href }: { href: string }) {
         "transition-all duration-300"
       )}
     >
-      {/* Decorative circles */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <div className="absolute top-4 right-4 w-24 h-24 border-2 border-[#1E3A5F] rounded-full" />
         <div className="absolute bottom-4 left-4 w-16 h-16 border-2 border-[#1E3A5F] rounded-full" />

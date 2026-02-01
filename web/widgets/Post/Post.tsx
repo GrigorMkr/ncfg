@@ -39,7 +39,6 @@ export function Post({ post, allPosts = [] }: PostProps) {
         <Container className="px-5 md:px-6 lg:px-8">
           <div className="mx-auto w-full max-w-[760px]">
             <header className="text-center">
-              {/* Meta: tag and date */}
               <div className="flex flex-wrap items-center justify-center gap-2 text-sm mb-4">
                 {post.tags[0] && (
                   <span className="text-[#3B82F6] font-medium uppercase">
@@ -49,8 +48,6 @@ export function Post({ post, allPosts = [] }: PostProps) {
                 {post.tags[0] && <span className="text-[#94A3B8]">•</span>}
                 <time className="text-[#94A3B8]">{formatDate(post.createdAt)}</time>
               </div>
-
-              {/* Title */}
               <h1 className="text-[28px] md:text-[36px] lg:text-[42px] leading-tight font-bold text-[#1E3A5F]">
                 {post.title}
               </h1>
@@ -74,8 +71,6 @@ export function Post({ post, allPosts = [] }: PostProps) {
                 )}
               </div>
             </figure>
-
-            {/* Body content */}
             <div className="mx-auto max-w-[624px]">
               <div
                 className="post-content"

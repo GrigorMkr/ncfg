@@ -35,7 +35,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Log the question data (in production, this would be sent via email service)
     console.log("=== Новый вопрос с сайта НЦФГ ===");
     console.log(`Получатель: ${RECIPIENT_EMAIL}`);
     console.log(`Статья: ${data.postTitle || "не указана"}`);
@@ -43,9 +42,6 @@ export async function POST(request: Request) {
     console.log(`Email: ${data.email}`);
     console.log(`Вопрос: ${data.question}`);
     console.log("================================");
-
-    // TODO: Integrate with email service (e.g., Resend, SendGrid, Nodemailer)
-    // For now, we'll just log the data and return success
 
     return NextResponse.json({
       success: true,

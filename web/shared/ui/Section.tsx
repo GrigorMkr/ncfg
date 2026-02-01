@@ -10,7 +10,6 @@ interface SectionProps {
   lead?: string;
   id?: string;
   background?: "white" | "gray";
-  /** Add top divider line (use when adjacent section has same background) */
   dividerTop?: boolean;
 }
 

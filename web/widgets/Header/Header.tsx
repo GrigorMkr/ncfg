@@ -19,8 +19,6 @@ const navigation = [
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  // On blog pages there's no lead form — navigate to homepage
   const ctaHref = pathname?.startsWith("/blog") ? "/#lead-form" : "#lead-form";
 
   return (

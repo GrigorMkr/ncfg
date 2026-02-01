@@ -1,15 +1,36 @@
-import {
-  Header,
-  Hero,
-  Products,
-  Services,
-  Partners,
-  News,
-  FAQ,
-  LeadForm,
-  Footer,
-} from "@/widgets";
+import dynamic from "next/dynamic";
+import { Header } from "@/widgets/Header";
+import { Hero } from "@/widgets/Hero";
 import homeData from "@/public/content/home.json";
+
+const Products = dynamic(
+  () => import("@/widgets/Products/Products").then((m) => ({ default: m.Products })),
+  { ssr: true }
+);
+const Services = dynamic(
+  () => import("@/widgets/Services/Services").then((m) => ({ default: m.Services })),
+  { ssr: true }
+);
+const Partners = dynamic(
+  () => import("@/widgets/Partners/Partners").then((m) => ({ default: m.Partners })),
+  { ssr: true }
+);
+const News = dynamic(
+  () => import("@/widgets/News/News").then((m) => ({ default: m.News })),
+  { ssr: true }
+);
+const FAQ = dynamic(
+  () => import("@/widgets/FAQ/FAQ").then((m) => ({ default: m.FAQ })),
+  { ssr: true }
+);
+const LeadForm = dynamic(
+  () => import("@/widgets/LeadForm/LeadForm").then((m) => ({ default: m.LeadForm })),
+  { ssr: true }
+);
+const Footer = dynamic(
+  () => import("@/widgets/Footer/Footer").then((m) => ({ default: m.Footer })),
+  { ssr: true }
+);
 
 export default function Home() {
   const { sections } = homeData;

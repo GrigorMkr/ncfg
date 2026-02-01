@@ -29,7 +29,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Log the lead data (in production, this would be sent via email service)
     console.log("=== Новая заявка с сайта НЦФГ ===");
     console.log(`Получатель: ${RECIPIENT_EMAIL}`);
     console.log(`Имя: ${data.name}`);
@@ -38,9 +37,6 @@ export async function POST(request: Request) {
     console.log(`Компания: ${data.company || "не указана"}`);
     console.log(`Сообщение: ${data.message || "не указано"}`);
     console.log("================================");
-
-    // TODO: Integrate with email service (e.g., Resend, SendGrid, Nodemailer)
-    // For now, we'll just log the data and return success
 
     return NextResponse.json({
       success: true,

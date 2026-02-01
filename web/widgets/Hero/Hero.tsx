@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
 
@@ -11,10 +12,17 @@ interface HeroProps {
 
 export function Hero({ headline, primaryCta }: HeroProps) {
   return (
-    <section
-      className="relative min-h-[400px] md:min-h-[500px] flex items-center bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/hero.png')" }}
-    >
+    <section className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/hero.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-r from-[#1E3A5F]/90 via-[#1E3A5F]/70 to-transparent" />
 
       <Container className="relative z-10">

@@ -43,10 +43,10 @@ interface FooterProps {
 }
 
 const navigation = [
-  { label: "Частным лицам", href: "#" },
-  { label: "Компаниям", href: "#" },
-  { label: "Волонтерам", href: "#" },
-  { label: "Ещё", href: "#" },
+  { label: "Частным лицам", href: "/individuals" },
+  { label: "Компаниям", href: "/companies" },
+  { label: "Блог", href: "/blog" },
+  { label: "Ещё", href: "/" },
 ];
 
 export function Footer({ data }: FooterProps) {

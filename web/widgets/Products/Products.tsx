@@ -34,8 +34,7 @@ function ProductCard({ product }: { product: Product }) {
   const isComingSoon = !!product.badge;
 
   return (
-    <article className="group bg-white rounded-xl overflow-hidden border border-[#F1F5F9] hover:border-[#E2E8F0] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
-      {/* Stub image like News/Services section */}
+      <article className="group bg-white rounded-xl overflow-hidden border border-[#F1F5F9] hover:border-[#E2E8F0] hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col">
       <div className="aspect-[16/9] bg-gradient-to-br from-[#1E3A5F] to-[#3B82F6] flex items-center justify-center relative">
         <span className="text-white/20 text-5xl font-bold">НЦФГ</span>
         {product.badge && (
