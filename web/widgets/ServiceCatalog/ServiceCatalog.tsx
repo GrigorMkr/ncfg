@@ -1,5 +1,6 @@
 import { Section } from "@/shared/ui/Section";
 import { ServiceBlock } from "./ServiceBlock";
+import { SERVICE_CATALOG } from "@/shared/config";
 
 interface ServiceItem {
   title: string;
@@ -23,8 +24,9 @@ export function ServiceCatalog({ services }: ServiceCatalogProps) {
   return (
     <Section
       id="services"
-      title="Наши услуги"
-      lead="Комплексные решения для развития финансовой культуры в компании"
+      title={SERVICE_CATALOG.title}
+      lead={SERVICE_CATALOG.lead}
+      background="gray"
     >
       {services.map((service) => (
         <ServiceBlock

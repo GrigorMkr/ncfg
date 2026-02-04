@@ -17,10 +17,10 @@ export function ServiceBlock({ title, description, items }: ServiceBlockProps) {
   return (
     <div className="mb-12 last:mb-0">
       <div className="mb-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#1E3A5F] mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
           {title}
         </h2>
-        <p className="text-[#475569] text-lg">{description}</p>
+        <p className="text-slate-600 text-lg">{description}</p>
       </div>
 
       {renderGrid(items)}
@@ -29,7 +29,6 @@ export function ServiceBlock({ title, description, items }: ServiceBlockProps) {
 }
 
 function renderGrid(items: ServiceItem[]) {
-  // 5 items: top row (featured spanning 2 cols + 1), bottom row (3 equal)
   if (items.length === 5) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -41,8 +40,6 @@ function renderGrid(items: ServiceItem[]) {
       </div>
     );
   }
-
-  // 3 items: featured left (2 cols, 2 rows), stacked right
   if (items.length === 3) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4">
@@ -57,7 +54,6 @@ function renderGrid(items: ServiceItem[]) {
     );
   }
 
-  // 2 items: 60/40 split
   if (items.length === 2) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -66,8 +62,6 @@ function renderGrid(items: ServiceItem[]) {
       </div>
     );
   }
-
-  // Default: responsive grid
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {items.map((item, idx) => (

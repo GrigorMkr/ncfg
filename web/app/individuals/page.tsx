@@ -9,6 +9,9 @@ import {
 } from "@/widgets";
 import homeData from "@/public/content/home.json";
 import individualsData from "@/public/content/individuals.json";
+import { REVALIDATE } from "@/shared/config/design-tokens";
+
+export const revalidate = REVALIDATE.DEFAULT;
 
 type IconType = "graduation-cap" | "trending-up" | "zap";
 
@@ -38,7 +41,7 @@ export default function IndividualsPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-screen animate-page-in">
         <HeroIndividuals
           headline={hero.headline}
           lead={hero.lead}

@@ -26,7 +26,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-[#58A8E0] text-white hover:bg-[#4A96CC] hover:shadow-[0_4px_12px_rgba(88,168,224,0.3)] active:bg-[#3E84B8] active:scale-[0.98]",
   secondary:
-    "bg-[#3B82F6]/10 text-[#3B82F6] hover:bg-[#3B82F6]/20",
+    "bg-[#3B82F6]/12 text-[#3B82F6] hover:bg-[#3B82F6]/20 border-0",
   ghost:
     "bg-transparent text-[#3B82F6] hover:bg-[rgba(59,130,246,0.05)]",
 };
@@ -40,7 +40,7 @@ const sizeStyles: Record<ButtonSize, string> = {
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   function Button({ variant = "primary", size = "md", className, children, ...props }, ref) {
     const baseStyles =
-      "inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B82F6] disabled:opacity-50 disabled:pointer-events-none";
+      "inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3B82F6] disabled:opacity-50 disabled:pointer-events-none";
 
     const classes = cn(baseStyles, variantStyles[variant], sizeStyles[size], className);
 

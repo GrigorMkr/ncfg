@@ -59,57 +59,31 @@ export function BentoCard({
     <Link
       href={href}
       className={cn(
-        "group flex flex-col rounded-2xl border transition-all duration-300",
-        "hover:shadow-lg hover:-translate-y-1",
+        "group flex flex-col rounded-2xl border border-slate-200/80 transition-all duration-300",
+        "hover:shadow-[0_20px_40px_-12px_rgba(14,165,233,0.15)] hover:-translate-y-1 hover:border-[#0ea5e9]/40",
         featured
-          ? "bg-[#F0F7FF] border-[#E2E8F0] p-6 md:p-8"
-          : "bg-white border-[#F1F5F9] p-5 md:p-6 hover:border-[#E2E8F0]",
+          ? "bg-[#0ea5e9]/5 border-[#0ea5e9]/20 p-6 md:p-8"
+          : "bg-white p-5 md:p-6",
         className
       )}
     >
-      <div
-        className={cn(
-          "rounded-xl flex items-center justify-center",
-          featured
-            ? "w-14 h-14 rounded-2xl bg-[#3B82F6]/10 mb-6"
-            : "w-11 h-11 bg-[#1E3A5F]/10 mb-4"
-        )}
-      >
-        <Icon
-          className={cn(
-            featured ? "w-7 h-7 text-[#3B82F6]" : "w-5 h-5 text-[#1E3A5F]"
-          )}
-        />
+      <div className={cn("icon-badge flex items-center justify-center mb-4", featured ? "w-14 h-14 rounded-2xl mb-6" : "w-11 h-11 rounded-xl")}>
+        <Icon className={cn(featured ? "w-7 h-7" : "w-5 h-5")} strokeWidth={1.75} />
       </div>
 
-      <h3
-        className={cn(
-          "font-semibold text-[#1E3A5F] group-hover:text-[#3B82F6] transition-colors",
-          featured ? "text-xl md:text-2xl mb-3" : "text-lg mb-2"
-        )}
-      >
+      <h3 className={cn("font-semibold text-slate-900 group-hover:text-[#0ea5e9] transition-colors", featured ? "text-xl md:text-2xl mb-3" : "text-lg mb-2")}>
         {title}
       </h3>
 
-      <p
-        className={cn(
-          "text-[#475569] leading-relaxed flex-grow",
-          featured ? "text-base md:text-lg" : "text-sm"
-        )}
-      >
+      <p className={cn("text-slate-600 leading-relaxed flex-grow", featured ? "text-base md:text-lg" : "text-sm")}>
         {description}
       </p>
 
-      <div
-        className={cn(
-          "flex items-center gap-2 text-[#3B82F6] transition-opacity mt-4",
-          "md:opacity-0 md:group-hover:opacity-100"
-        )}
-      >
+      <div className={cn("flex items-center gap-2 text-[#0ea5e9] transition-opacity mt-4", "md:opacity-0 md:group-hover:opacity-100")}>
         <span className={cn("font-medium", featured ? "text-base" : "text-sm")}>
           Подробнее
         </span>
-        <ArrowRight className={cn(featured ? "w-5 h-5" : "w-4 h-4")} />
+        <ArrowRight className={cn(featured ? "w-5 h-5" : "w-4 h-4")} strokeWidth={1.75} />
       </div>
     </Link>
   );

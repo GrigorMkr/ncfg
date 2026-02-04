@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import { SmoothAnchor } from "@/shared/ui/SmoothAnchor";
+import { PageBackground } from "@/shared/ui/PageBackground";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "cyrillic"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "НЦФГ — Национальный центр финансовой грамотности",
   description:
     "Более 20 лет реализуем проекты по финансовой грамотности. 30 миллионов участников, 84 региона, программы для компаний и частных лиц.",
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: "/logo.svg",
+    apple: "/logo.svg",
   },
   openGraph: {
     title: "НЦФГ — Национальный центр финансовой грамотности",
@@ -33,7 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className="font-sans antialiased">
+        <PageBackground />
         <SmoothAnchor />
         {children}
       </body>

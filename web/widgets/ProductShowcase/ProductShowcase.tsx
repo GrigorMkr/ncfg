@@ -20,7 +20,14 @@ export function ProductShowcase({ title, lead, products }: ProductShowcaseProps)
     <Section id="products" title={title} lead={lead}>
       <div className="space-y-12 md:space-y-16">
         {products.map((product, index) => (
-          <div key={product.title}>
+          <div
+            key={product.title}
+            className="animate-fade-in-up opacity-0"
+            style={{
+              animationDelay: `${index * 120}ms`,
+              animationFillMode: "forwards",
+            }}
+          >
             {index > 0 && (
               <hr className="border-t border-[#E2E8F0] mb-12 md:mb-16" />
             )}

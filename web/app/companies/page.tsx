@@ -9,6 +9,9 @@ import {
 } from "@/widgets";
 import homeData from "@/public/content/home.json";
 import companiesData from "@/public/content/companies.json";
+import { REVALIDATE } from "@/shared/config/design-tokens";
+
+export const revalidate = REVALIDATE.DEFAULT;
 
 export const metadata: Metadata = {
   title: "Компаниям — Программы финансового благополучия для сотрудников | НЦФГ",
@@ -29,7 +32,7 @@ export default function CompaniesPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="min-h-screen animate-page-in">
         <HeroCompanies
           headline={hero.headline}
           lead={hero.lead}

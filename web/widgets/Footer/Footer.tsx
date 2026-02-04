@@ -1,7 +1,9 @@
-import Link from "next/link";
-import Image from "next/image";
-import { Mail, Phone, MapPin, FileText } from "lucide-react";
 import { Container } from "@/shared/ui/Container";
+import { Logo } from "@/shared/ui/Logo";
+import { FooterContacts, FooterNav, FooterSocialLinks, FooterDocuments } from "./ui";
+import { MapWithAddress } from "@/shared/ui/MapWithAddress";
+import { MapHoverProvider } from "@/shared/context/MapHoverContext";
+import { FOOTER_NAV, ROUTES } from "@/shared/config";
 
 interface LegalDocument {
   label: string;
@@ -10,163 +12,76 @@ interface LegalDocument {
 }
 
 interface FooterData {
-  organization: {
-    fullName: string;
-    shortName: string;
-  };
-  contacts: {
-    phone: string;
-    email: string;
-    legalAddress: string;
-  };
-  social: Array<{
-    label: string;
-    href: string;
-  }>;
-  legalLinks: Array<{
-    label: string;
-    href: string;
-  }>;
-  legalDocuments: {
-    title: string;
-    items: LegalDocument[];
-  };
-  copyright: {
-    years: string;
-    text: string;
-    notice: string;
-  };
+  organization: { fullName: string; shortName: string };
+  contacts: { phone: string; email: string; legalAddress: string };
+  social: Array<{ id?: string; label: string; href: string }>;
+  legalLinks: Array<{ label: string; href: string }>;
+  legalDocuments?: { title: string; items: LegalDocument[] };
+  copyright: { years: string; text: string; notice: string };
 }
 
 interface FooterProps {
   data: FooterData;
 }
 
-const navigation = [
-  { label: "Частным лицам", href: "/individuals" },
-  { label: "Компаниям", href: "/companies" },
-  { label: "Блог", href: "/blog" },
-  { label: "Ещё", href: "/" },
-];
-
 export function Footer({ data }: FooterProps) {
   return (
-    <footer id="contacts" className="bg-[#1E3A5F] text-white">
+    <footer
+      id="contacts"
+      className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden"
+    >
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#0ea5e9]/8 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-[#0ea5e9]/15 blur-3xl animate-pulse-soft" />
+        <div className="absolute top-1/2 right-1/4 w-64 h-64 rounded-full bg-[#38bdf8]/10 blur-3xl animate-float" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0ea5e9]/40 to-transparent" />
+      </div>
+
       <Container>
-        <div className="py-12 md:py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div>
-              <Link href="/" className="flex items-center gap-3 mb-6">
-                <Image
-                  src="/logo.svg"
-                  alt="НЦФГ"
-                  width={40}
-                  height={40}
-                  className="h-10 w-10 brightness-0 invert"
-                />
-              </Link>
-              <p className="text-white/70 text-sm leading-relaxed mb-4">
+        <MapHoverProvider>
+        <div className="py-16 md:py-24 relative">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
+            <div className="animate-fade-in-up">
+              <Logo href={ROUTES.HOME} showWordmark variant="light" size="md" className="mb-6 transition-transform hover:scale-[1.02]" />
+              <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
                 {data.organization.fullName}
               </p>
-              <div className="space-y-2 text-sm">
-                <a
-                  href={`tel:${data.contacts.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
-                >
-                  <Phone size={14} className="text-[#58A8E0]" />
-                  {data.contacts.phone}
-                </a>
-                <a
-                  href={`mailto:${data.contacts.email}`}
-                  className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
-                >
-                  <Mail size={14} className="text-[#58A8E0]" />
-                  {data.contacts.email}
-                </a>
-                <div className="flex items-start gap-2 text-white/70">
-                  <MapPin size={14} className="text-[#58A8E0] shrink-0 mt-0.5" />
-                  <span>{data.contacts.legalAddress}</span>
-                </div>
-              </div>
+              <FooterContacts
+                phone={data.contacts.phone}
+                email={data.contacts.email}
+                legalAddress={data.contacts.legalAddress}
+              />
             </div>
 
-            <div>
-              <h3 className="font-semibold mb-4">Навигация</h3>
-              <ul className="space-y-3">
-                {navigation.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="text-white/70 hover:text-white transition-colors text-sm"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="animate-fade-in-up animate-delay-100">
+              <h3 className="font-semibold mb-5 text-white/95">Навигация</h3>
+              <FooterNav items={FOOTER_NAV} />
             </div>
 
-            <div>
-              <h3 className="font-semibold mb-4">Социальные сети</h3>
-              <ul className="space-y-3">
-                {data.social.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/70 hover:text-white transition-colors text-sm"
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6">
-                <h4 className="font-semibold mb-3 text-sm">Юридическая информация</h4>
-                <ul className="space-y-2">
-                  {data.legalLinks.map((item) => (
-                    <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className="text-white/70 hover:text-white transition-colors text-sm"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="animate-fade-in-up animate-delay-200">
+              <FooterSocialLinks social={data.social} legalLinks={data.legalLinks} />
             </div>
 
             {data.legalDocuments && data.legalDocuments.items.length > 0 && (
-              <div>
-                <h3 className="font-semibold mb-4">{data.legalDocuments.title}</h3>
-                <ul className="space-y-3">
-                  {data.legalDocuments.items.map((doc) => (
-                    <li key={doc.label} className="flex items-start gap-3">
-                      <FileText size={16} className="text-[#58A8E0] shrink-0 mt-0.5" />
-                      <a
-                        href={doc.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-white/70 hover:text-white transition-colors text-sm"
-                      >
-                        {doc.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              <div className="animate-fade-in-up animate-delay-300">
+                <FooterDocuments
+                  title={data.legalDocuments.title}
+                  items={data.legalDocuments.items}
+                />
               </div>
             )}
           </div>
-        </div>
 
-        <div className="py-6 border-t border-white/10">
+          <MapWithAddress />
+        </div>
+        </MapHoverProvider>
+
+        <div className="py-8 border-t border-white/10 relative">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
-            <div>
-              <p>{data.copyright.text}</p>
-              <p className="mt-1">{data.copyright.notice}</p>
+            <div className="text-center md:text-left">
+              <p className="transition-colors hover:text-white/70">{data.copyright.text}</p>
+              <p className="mt-1 text-white/40 text-xs">{data.copyright.notice}</p>
             </div>
           </div>
         </div>

@@ -1,69 +1,26 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { memo } from "react";
 import { ChevronDown, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
+import { CONTACT_LINKS } from "@/shared/config";
+import { usePostQuestionForm, POST_QUESTION } from "@/shared/slices/post-question";
 
 interface PostQuestionFormProps {
   postTitle: string;
 }
 
-interface FormData {
-  question: string;
-  name: string;
-  email: string;
-}
-
-type FormStatus = "idle" | "loading" | "success" | "error";
-
-export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [formData, setFormData] = useState<FormData>({
-    question: "",
-    name: "",
-    email: "",
-  });
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    setErrorMessage("");
-
-    try {
-      const response = await fetch("/api/question", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          postTitle,
-        }),
-      });
-
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || "Произошла ошибка при отправке");
-      }
-
-      setStatus("success");
-      setFormData({ question: "", name: "", email: "" });
-    } catch (error) {
-      setStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Произошла ошибка");
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    if (name === "question" && value.length > 1000) return;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+function PostQuestionFormInner({ postTitle }: PostQuestionFormProps) {
+  const {
+    isExpanded,
+    formData,
+    status,
+    errorMessage,
+    handleChange,
+    handleSubmit,
+    expand,
+  } = usePostQuestionForm(postTitle);
 
   if (status === "success") {
     return (
@@ -72,11 +29,9 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
           <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-8 text-center">
             <CheckCircle className="w-12 h-12 text-[#10B981] mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-[#1E3A5F] mb-2">
-              Вопрос отправлен!
+              {POST_QUESTION.successTitle}
             </h3>
-            <p className="text-[#475569]">
-              Спасибо за обращение. Мы ответим вам в ближайшее время.
-            </p>
+            <p className="text-[#475569]">{POST_QUESTION.successMessage}</p>
           </div>
         </div>
       </section>
@@ -90,17 +45,17 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
           {!isExpanded ? (
             <div className="text-center">
               <h3 className="text-xl font-semibold text-[#1E3A5F] mb-2">
-                Есть вопрос по другой теме?
+                {POST_QUESTION.collapseTitle}
               </h3>
               <p className="text-base text-[#475569] mb-6">
-                Задайте его специалисту НЦФГ
+                {POST_QUESTION.collapseLead}
               </p>
               <Button
                 variant="secondary"
-                onClick={() => setIsExpanded(true)}
+                onClick={expand}
                 className="inline-flex items-center gap-2"
               >
-                Задать вопрос
+                {POST_QUESTION.expandButton}
                 <ChevronDown size={18} />
               </Button>
             </div>
@@ -108,7 +63,7 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="text-center mb-6">
                 <h3 className="text-xl font-semibold text-[#1E3A5F] mb-2">
-                  Задайте вопрос специалисту
+                  {POST_QUESTION.formTitle}
                 </h3>
               </div>
 
@@ -124,7 +79,7 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
                   htmlFor="question"
                   className="block text-sm font-medium text-[#1E3A5F] mb-2"
                 >
-                  Ваш вопрос *
+                  {POST_QUESTION.questionLabel}
                 </label>
                 <div className="relative">
                   <textarea
@@ -140,10 +95,10 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
                       "focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[rgba(59,130,246,0.15)]",
                       "transition-all duration-150"
                     )}
-                    placeholder="Опишите ваш вопрос..."
+                    placeholder={POST_QUESTION.questionPlaceholder}
                   />
                   <span className="absolute right-3 bottom-3 text-sm text-[#94A3B8]">
-                    {formData.question.length}/1000
+                    {formData.question.length}/{POST_QUESTION.questionMaxLength}
                   </span>
                 </div>
               </div>
@@ -217,22 +172,22 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
 
               <div className="pt-4 border-t border-[#E2E8F0]">
                 <p className="text-sm text-[#94A3B8] mb-2">
-                  Или свяжитесь с нами напрямую:
+                  {POST_QUESTION.contactLabel}
                 </p>
                 <div className="flex flex-wrap gap-4 text-sm">
                   <a
-                    href="https://t.me/wellf_club"
+                    href={CONTACT_LINKS.telegram.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#3B82F6] hover:underline"
                   >
-                    Telegram @wellf_club
+                    {CONTACT_LINKS.telegram.label}
                   </a>
                   <a
-                    href="tel:+74995011173"
+                    href={CONTACT_LINKS.phone.href}
                     className="text-[#3B82F6] hover:underline"
                   >
-                    +7 (499) 501-11-73
+                    {CONTACT_LINKS.phone.label}
                   </a>
                 </div>
               </div>
@@ -243,3 +198,5 @@ export function PostQuestionForm({ postTitle }: PostQuestionFormProps) {
     </section>
   );
 }
+
+export const PostQuestionForm = memo(PostQuestionFormInner);
