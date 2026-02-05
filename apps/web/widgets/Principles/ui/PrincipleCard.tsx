@@ -2,7 +2,7 @@ import { getPrincipleIcon } from "@/shared/constants";
 
 interface Principle {
   id: string;
-  order: number;
+  order?: number;
   title: string;
   description: string;
 }

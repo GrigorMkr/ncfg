@@ -3,7 +3,7 @@ import { PrincipleCard } from "./ui";
 
 interface Principle {
   id: string;
-  order: number;
+  order?: number;
   title: string;
   description: string;
 }
@@ -14,7 +14,7 @@ interface PrinciplesProps {
 }
 
 export function Principles({ title, principles }: PrinciplesProps) {
-  const sortedPrinciples = [...principles].sort((a, b) => a.order - b.order);
+  const sortedPrinciples = [...principles].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   return (
     <Section id="principles" title={title} background="gray">
