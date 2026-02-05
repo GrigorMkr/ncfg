@@ -1,0 +1,32 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "fullName": "Евгения Блискавка",
+      "position": "Генеральный директор",
+      "team": { "title": "Руководство" },
+      "isTeamMember": true,
+      "isExpert": true
+    },
+    {
+      "id": 2,
+      "fullName": "Анна Зеленцова",
+      "position": "Директор по развитию",
+      "team": { "title": "Руководство" },
+      "isTeamMember": true,
+      "isExpert": false
+    },
+    {
+      "id": 3,
+      "fullName": "Михаил Сергеев",
+      "position": "Финансовый консультант",
+      "team": { "title": "Эксперты" },
+      "isTeamMember": false,
+      "isExpert": true
+    }
+  ],
+  "indexes": {
+    "teamPeopleIds": [1, 2],
+    "expertPeopleIds": [1, 3]
+  }
+}
