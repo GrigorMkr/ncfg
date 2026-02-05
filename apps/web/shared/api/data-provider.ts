@@ -26,7 +26,7 @@ export async function fetchNewsArticles(): Promise<NewsArticleData[]> {
     }
   }
 
-  const newsData = await import('@/public/content/news/ncfg_news.json');
+  const newsData = await import('@/public/news/ncfg_news.json');
   const articles = newsData.default as NewsArticleData[];
   return articles.map(article => ({
     ...article,
@@ -51,7 +51,7 @@ export async function fetchNewsArticle(slug: string): Promise<NewsArticleData | 
     }
   }
 
-  const newsData = await import('@/public/content/news/ncfg_news.json');
+  const newsData = await import('@/public/news/ncfg_news.json');
   const articles = newsData.default as NewsArticleData[];
   const article = articles.find(a => a.slug === slug);
   if (!article) return null;
@@ -75,7 +75,7 @@ export async function fetchLatestNewsArticles(limit: number = 5): Promise<NewsAr
     }
   }
 
-  const newsData = await import('@/public/content/news/ncfg_news.json');
+  const newsData = await import('@/public/news/ncfg_news.json');
   const articles = (newsData.default as NewsArticleData[])
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     .slice(0, limit);
