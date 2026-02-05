@@ -65,7 +65,7 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
   useEffect(() => {
     if (!mapRef.current || !isHovered) return;
-    const { LAT, LNG, ZOOM, ZOOM_HOVER } = MAP;
+    const { LAT, LNG, ZOOM_HOVER } = MAP;
     mapRef.current.setView([LAT, LNG], ZOOM_HOVER, { animate: true, duration: MAP.ZOOM_ANIMATION_DURATION });
   }, [isHovered]);
 

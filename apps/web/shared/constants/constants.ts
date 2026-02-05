@@ -230,6 +230,7 @@ export {
   PRINCIPLE_ICON_IDS,
   type PrincipleIconId,
   getPrincipleIcon,
+  PRODUCT_SHOWCASE_ICON_KEYS,
   PRODUCT_SHOWCASE_ICON_MAP,
   getProductShowcaseIcon,
   type ProductShowcaseIcon,

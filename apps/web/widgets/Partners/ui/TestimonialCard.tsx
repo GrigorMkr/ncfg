@@ -20,7 +20,7 @@ interface TestimonialCardProps {
 export function TestimonialCard({
   testimonial,
   totalCount,
-  currentIndex,
+  currentIndex: _currentIndex,
   onPrev,
   onNext,
   moreHref,
