@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/shared/lib/cn";
+import { getAssetPath } from "@/shared/lib/getAssetPath";
 
 interface LogoProps {
   href?: string;
@@ -26,10 +27,11 @@ export function Logo({
   size = "md",
 }: LogoProps) {
   const s = sizes[size];
+  const logoSrc = getAssetPath("/logo.svg");
   const content = (
     <>
       <Image
-        src="/logo.svg"
+        src={logoSrc}
         alt="НЦФГ"
         width={s.icon}
         height={s.icon}

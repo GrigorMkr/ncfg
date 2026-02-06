@@ -1,10 +1,17 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { Map } from "leaflet";
+import type { Map, Marker } from "leaflet";
 import { MAP } from "@/shared/config/design-tokens";
 
-const ORANGE_MARKER_SVG = (w: number, h: number) => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 36" fill="#f97316">
+declare global {
+  interface Window {
+    L: typeof import("leaflet");
+  }
+}
+
+const ORANGE_MARKER_SVG = (w: number, h: number, animated: boolean) => `
+<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 36" fill="#f97316" class="${animated ? 'map-marker-animated' : ''}">
   <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24c0-6.6-5.4-12-12-12zm0 17c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"/>
 </svg>`;
 
@@ -15,6 +22,7 @@ interface MapEmbedLeafletProps {
 export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
+  const markerRef = useRef<Marker | null>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -27,6 +35,7 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
     const initMap = async () => {
       const L = (await import("leaflet")).default;
+      window.L = L;
       // @ts-expect-error CSS import for leaflet styles
       await import("leaflet/dist/leaflet.css");
 
@@ -43,13 +52,13 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
       const { MARKER_WIDTH, MARKER_HEIGHT, MARKER_ANCHOR_X, MARKER_ANCHOR_Y } = MAP;
       const orangeIcon = L.divIcon({
-        html: ORANGE_MARKER_SVG(MARKER_WIDTH, MARKER_HEIGHT),
+        html: ORANGE_MARKER_SVG(MARKER_WIDTH, MARKER_HEIGHT, false),
         className: "map-marker-orange",
         iconSize: [MARKER_WIDTH, MARKER_HEIGHT],
         iconAnchor: [MARKER_ANCHOR_X, MARKER_ANCHOR_Y],
       });
 
-      L.marker([LAT, LNG], { icon: orangeIcon })
+      markerRef.current = L.marker([LAT, LNG], { icon: orangeIcon })
         .addTo(mapRef.current)
         .bindPopup(MAP.ADDRESS);
     };
@@ -60,20 +69,39 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
       if (mapRef.current) {
         mapRef.current.remove();
         mapRef.current = null;
+        markerRef.current = null;
       }
     };
   }, [mounted]);
 
   useEffect(() => {
-    if (!mapRef.current || !isHovered) return;
-    const { LAT, LNG, ZOOM_HOVER } = MAP;
-    mapRef.current.setView([LAT, LNG], ZOOM_HOVER, { animate: true, duration: MAP.ZOOM_ANIMATION_DURATION });
-  }, [isHovered]);
+    if (!mapRef.current) return;
+    const { LAT, LNG, ZOOM_HOVER, ZOOM, MARKER_WIDTH, MARKER_HEIGHT, MARKER_ANCHOR_X, MARKER_ANCHOR_Y } = MAP;
+    
+    const L = window.L;
+    if (!L || !markerRef.current) return;
 
-  useEffect(() => {
-    if (!mapRef.current || isHovered) return;
-    const { LAT, LNG, ZOOM } = MAP;
-    mapRef.current.setView([LAT, LNG], ZOOM, { animate: true, duration: MAP.ZOOM_ANIMATION_DURATION });
+    if (isHovered) {
+      mapRef.current.setView([LAT, LNG], ZOOM_HOVER, { animate: true, duration: MAP.ZOOM_ANIMATION_DURATION });
+      const animatedIcon = L.divIcon({
+        html: ORANGE_MARKER_SVG(MARKER_WIDTH * 1.3, MARKER_HEIGHT * 1.3, true),
+        className: "map-marker-orange map-marker-bounce",
+        iconSize: [MARKER_WIDTH * 1.3, MARKER_HEIGHT * 1.3],
+        iconAnchor: [MARKER_ANCHOR_X * 1.3, MARKER_ANCHOR_Y * 1.3],
+      });
+      markerRef.current.setIcon(animatedIcon);
+      markerRef.current.openPopup();
+    } else {
+      mapRef.current.setView([LAT, LNG], ZOOM, { animate: true, duration: MAP.ZOOM_ANIMATION_DURATION });
+      const normalIcon = L.divIcon({
+        html: ORANGE_MARKER_SVG(MARKER_WIDTH, MARKER_HEIGHT, false),
+        className: "map-marker-orange",
+        iconSize: [MARKER_WIDTH, MARKER_HEIGHT],
+        iconAnchor: [MARKER_ANCHOR_X, MARKER_ANCHOR_Y],
+      });
+      markerRef.current.setIcon(normalIcon);
+      markerRef.current.closePopup();
+    }
   }, [isHovered]);
 
   return (
@@ -81,6 +109,18 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
       className={`map-embed-wrapper rounded-2xl overflow-hidden border border-white/10 shadow-xl relative ${isHovered ? "map-address-hovered" : ""}`}
       style={{ aspectRatio: MAP.ASPECT_RATIO, minHeight: MAP.MIN_HEIGHT_PX }}
     >
+      <style jsx global>{`
+        .map-marker-bounce {
+          animation: marker-bounce 0.5s ease-out;
+        }
+        @keyframes marker-bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
+        }
+        .map-marker-orange {
+          filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.4));
+        }
+      `}</style>
       <div
         ref={containerRef}
         className="w-full h-full bg-slate-800"

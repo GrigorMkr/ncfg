@@ -4,6 +4,7 @@ import { memo, useState, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/shared/lib/cn";
+import { getAssetPath } from "@/shared/lib/getAssetPath";
 
 interface PartnerLogo {
   title: string;
@@ -17,7 +18,8 @@ interface LogoCardProps {
 
 export const LogoCard = memo(function LogoCard({ logo }: LogoCardProps) {
   const [imgError, setImgError] = useState(false);
-  const showImage = Boolean(logo.img && !imgError);
+  const imgSrc = getAssetPath(logo.img);
+  const showImage = Boolean(imgSrc && !imgError);
   const handleError = useCallback(() => setImgError(true), []);
 
   const cardClassName = cn(
@@ -29,12 +31,12 @@ export const LogoCard = memo(function LogoCard({ logo }: LogoCardProps) {
   const content = showImage ? (
     <div className="relative w-full h-full min-h-[48px]">
       <Image
-        src={logo.img!}
+        src={imgSrc}
         alt={logo.title}
         fill
         className="object-contain p-1"
         sizes="(max-width: 640px) 33vw, (max-width: 768px) 25vw, 20vw"
-        unoptimized={logo.img?.startsWith("http") === true}
+        unoptimized={imgSrc.startsWith("http")}
         onError={handleError}
       />
     </div>

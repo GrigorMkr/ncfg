@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { FileText, ExternalLink } from "lucide-react";
+import { FileText, ExternalLink, ChevronDown } from "lucide-react";
 import { SocialIcon } from "@/shared/ui/SocialIcon";
 
 interface FooterSocialLinksProps {
@@ -8,6 +11,8 @@ interface FooterSocialLinksProps {
 }
 
 export function FooterSocialLinks({ social, legalLinks }: FooterSocialLinksProps) {
+  const [legalOpen, setLegalOpen] = useState(false);
+
   return (
     <div>
       <h3 className="font-semibold mb-5 text-white/95">Социальные сети</h3>
@@ -31,9 +36,17 @@ export function FooterSocialLinks({ social, legalLinks }: FooterSocialLinksProps
           </li>
         ))}
       </ul>
-      <div className="mt-8">
-        <h4 className="font-semibold mb-4 text-sm text-white/90">Юридическая информация</h4>
-        <ul className="space-y-2">
+      <div className="mt-6 md:mt-8">
+        <button
+          type="button"
+          className="md:hidden flex items-center justify-between w-full text-white/70 hover:text-white transition-colors py-3 border-b border-white/10"
+          onClick={() => setLegalOpen(!legalOpen)}
+        >
+          <span className="font-semibold text-white/95">Юридическая информация</span>
+          <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${legalOpen ? 'rotate-180' : ''}`} />
+        </button>
+        <h4 className="hidden md:block font-semibold mb-4 text-sm text-white/90">Юридическая информация</h4>
+        <ul className={`space-y-2 overflow-hidden transition-all duration-300 ${legalOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}`}>
           {legalLinks.map((item) => (
             <li key={item.label}>
               <Link
@@ -56,10 +69,20 @@ interface FooterDocumentsProps {
 }
 
 export function FooterDocuments({ title, items }: FooterDocumentsProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
-      <h3 className="font-semibold mb-5 text-white/95">{title}</h3>
-      <ul className="space-y-2">
+      <button
+        type="button"
+        className="md:hidden flex items-center justify-between w-full text-white/70 hover:text-white transition-colors py-3 border-b border-white/10"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="font-semibold text-white/95">{title}</span>
+        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      <h3 className="hidden md:block font-semibold mb-5 text-white/95">{title}</h3>
+      <ul className={`space-y-2 overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}`}>
         {items.map((doc) => (
           <li key={doc.label} className="group flex items-start gap-3">
             <span className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center shrink-0 mt-0.5 text-[#38bdf8] group-hover:bg-[#38bdf8]/20 group-hover:scale-105 transition-all duration-300">

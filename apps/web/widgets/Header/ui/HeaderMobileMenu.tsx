@@ -15,10 +15,10 @@ export function HeaderMobileMenu({ items, ctaHref, isOpen, onClose }: HeaderMobi
     <div
       className={cn(
         "md:hidden overflow-hidden transition-all duration-500 ease-out",
-        isOpen ? "max-h-[420px] opacity-100" : "max-h-0 opacity-0"
+        isOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
       )}
     >
-      <div className="py-6 border-t border-slate-200/60 space-y-1">
+      <div className="py-6 border-t border-slate-200/60 space-y-1 max-h-[calc(100vh-80px)] overflow-y-auto">
         {items.map((item, index) => (
           <div key={item.href + index}>
             <Link
@@ -45,14 +45,15 @@ export function HeaderMobileMenu({ items, ctaHref, isOpen, onClose }: HeaderMobi
             ))}
           </div>
         ))}
-        <div className="mt-6 px-4 sm:hidden">
+        <div className="pt-4 pb-2 px-4">
           <a
             href={ctaHref}
-            className="flex items-center justify-center gap-2 w-full h-12 rounded-xl font-semibold
+            onClick={onClose}
+            className="flex items-center justify-center gap-2 w-full h-14 rounded-xl font-semibold text-base
               bg-gradient-to-r from-[#0ea5e9] to-[#38bdf8] text-white
               shadow-lg shadow-[#0ea5e9]/25 hover:shadow-xl active:scale-[0.98] transition-all duration-300"
           >
-            <Send className="w-4 h-4" strokeWidth={2} />
+            <Send className="w-5 h-5" strokeWidth={2} />
             Оставить заявку
           </a>
         </div>
