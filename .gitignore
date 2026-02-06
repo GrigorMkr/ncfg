@@ -67,6 +67,9 @@ coverage/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+.cursor/
+.claude/
+CLAUDE.md
 
 # ===================
 # OS files
