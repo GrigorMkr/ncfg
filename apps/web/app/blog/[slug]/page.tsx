@@ -2,10 +2,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header, Post, Footer } from "@/widgets";
 import homeData from "@/public/content/home.json";
-import { fetchNewsArticle, fetchLatestNewsArticles } from "@/shared/api/data-provider";
-import { REVALIDATE } from "@/shared/config/design-tokens";
+import { fetchNewsArticle, fetchLatestNewsArticles, fetchNewsArticles } from "@/shared/api/data-provider";
 
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const articles = await fetchNewsArticles();
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,21 +44,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { sections } = homeData;
 
   let article;
-  let otherPosts = [];
+  let allPosts: { id: string; slug: string; title: string; tags: string[]; anonsImage?: string | null; createdAt: string }[] = [];
 
   try {
     article = await fetchNewsArticle(slug);
-    const allArticles = await fetchLatestNewsArticles(4);
-    otherPosts = allArticles
-      .filter((a) => a.slug !== slug)
-      .slice(0, 3)
-      .map((a) => ({
-        id: a.id,
-        title: a.title,
-        date: new Date(a.createdAt).toLocaleDateString("ru-RU"),
-        href: `/blog/${a.slug}`,
-        image: a.anonsImage,
-      }));
+    allPosts = await fetchLatestNewsArticles(10);
   } catch {
     notFound();
   }
@@ -61,21 +57,29 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const post = {
+    id: article.id,
+    title: article.title,
+    tags: article.tags ?? [],
+    body: article.body ?? "",
+    anonsImage: article.anonsImage,
+    createdAt: article.createdAt,
+  };
+
+  const allPostsFormatted = allPosts.map((a) => ({
+    id: a.id,
+    title: a.title,
+    tags: a.tags ?? [],
+    slug: a.slug,
+    anonsImage: a.anonsImage ?? "",
+    createdAt: a.createdAt,
+  }));
+
   return (
     <>
       <Header />
       <main className="min-h-screen animate-page-in">
-        <Post
-          title={article.title}
-          date={new Date(article.createdAt).toLocaleDateString("ru-RU", {
-            day: "numeric",
-            month: "long",
-            year: "numeric",
-          })}
-          content={article.body ?? ""}
-          image={article.anonsImage}
-          otherPosts={otherPosts}
-        />
+        <Post post={post} allPosts={allPostsFormatted} />
       </main>
       <Footer data={sections.Footer.data} />
     </>

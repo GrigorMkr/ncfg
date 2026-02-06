@@ -16,7 +16,6 @@ import howWeWorkData from "@/public/content/ncfg_how_we_work.json";
 import principlesData from "@/public/content/ncfg_principles.json";
 import peopleData from "@/public/content/ncfg_finzdorov_people.json";
 import { fetchPeopleData } from "@/shared/api/data-provider";
-import { REVALIDATE } from "@/shared/config/design-tokens";
 
 export const metadata: Metadata = {
   title: "О центре — Национальный центр финансовой грамотности | НЦФГ",
@@ -30,7 +29,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 const faqItems = [
   {

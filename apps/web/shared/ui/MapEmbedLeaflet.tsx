@@ -27,6 +27,7 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
     const initMap = async () => {
       const L = (await import("leaflet")).default;
+      // @ts-expect-error CSS import for leaflet styles
       await import("leaflet/dist/leaflet.css");
 
       const { LAT, LNG, ZOOM } = MAP;
@@ -65,7 +66,7 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
   useEffect(() => {
     if (!mapRef.current || !isHovered) return;
-    const { LAT, LNG, ZOOM, ZOOM_HOVER } = MAP;
+    const { LAT, LNG, ZOOM_HOVER } = MAP;
     mapRef.current.setView([LAT, LNG], ZOOM_HOVER, { animate: true, duration: MAP.ZOOM_ANIMATION_DURATION });
   }, [isHovered]);
 

@@ -7,9 +7,7 @@ import {
 } from "@/widgets";
 import { Section } from "@/shared/ui";
 import homeData from "@/public/content/home.json";
-import { REVALIDATE } from "@/shared/config/design-tokens";
-
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Твори добро — Социальные и благотворительные проекты | НЦФГ",

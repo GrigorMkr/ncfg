@@ -1,15 +1,19 @@
-﻿import type { NextConfig } from "next";
+import type { NextConfig } from "next";
 import path from "path";
 
-const isDev = process.env.NODE_ENV === 'development';
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
 const nextConfig: NextConfig = {
+  output: isGitHubPages ? 'export' : undefined,
+  basePath: isGitHubPages ? '/ncfg' : '',
+  assetPrefix: isGitHubPages ? '/ncfg/' : '',
+  trailingSlash: true,
   outputFileTracingRoot: path.join(__dirname),
   experimental: {
     optimizePackageImports: ['lucide-react'],
   },
   images: {
-    unoptimized: isDev,
+    unoptimized: true,
     remotePatterns: [
       { protocol: 'http', hostname: 'localhost', port: '1337', pathname: '/uploads/**' },
       { protocol: 'https', hostname: '*.strapiapp.com', pathname: '/uploads/**' },

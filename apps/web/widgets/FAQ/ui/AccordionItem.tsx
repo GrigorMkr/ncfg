@@ -9,7 +9,7 @@ import { ANIMATION } from "@/shared/constants";
 interface AccordionItemProps {
   item: FAQItem;
   isOpen: boolean;
-  onToggle: () => void;
+  onToggle: (index: number) => void;
   index: number;
 }
 

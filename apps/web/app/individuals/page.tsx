@@ -8,9 +8,7 @@ import {
   Footer,
 } from "@/widgets";
 import homeData from "@/public/content/home.json";
-import { REVALIDATE } from "@/shared/config/design-tokens";
-
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Для частных лиц — Программы финансовой грамотности | НЦФГ",

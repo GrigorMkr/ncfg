@@ -90,14 +90,14 @@ export async function getPublishedServices(): Promise<StrapiService[]> {
   return response.data;
 }
 
-import type { Service, ServiceCategory, ServiceFacts, ServiceExample, ServiceCTA, ServicesData } from './types/service';
+import type { LegacyService, LegacyServiceCategory, ServiceFacts, ServiceExample, ServiceCTA, LegacyServicesData } from './types/service';
 
 function extractTextItems(items: StrapiTextItem[] | null | undefined): string[] {
   if (!items || !Array.isArray(items)) return [];
   return items.map(item => item.text);
 }
 
-export function transformToLegacyService(service: StrapiService): Service {
+export function transformToLegacyService(service: StrapiService): LegacyService {
   const facts: ServiceFacts | undefined = service.facts ? {
     experienceYears: service.facts.experienceYears || 0,
     developedBy: service.facts.developedBy || '',
@@ -108,7 +108,7 @@ export function transformToLegacyService(service: StrapiService): Service {
 
   const examples: ServiceExample[] | undefined = service.examples?.length ? 
     service.examples.map(ex => ({
-      id: ex.exampleId || ex.id,
+      id: String(ex.exampleId || ex.id),
       title: ex.title,
       type: ex.type === 'custom' ? undefined : ex.type || undefined,
       link: ex.link || undefined,
@@ -139,7 +139,7 @@ export function transformToLegacyService(service: StrapiService): Service {
   };
 }
 
-export function transformToLegacyCategory(category: StrapiServiceCategory): ServiceCategory {
+export function transformToLegacyCategory(category: StrapiServiceCategory): LegacyServiceCategory {
   return {
     id: category.slug,
     order: category.order,
@@ -149,7 +149,7 @@ export function transformToLegacyCategory(category: StrapiServiceCategory): Serv
   };
 }
 
-export async function getServicesDataLegacy(): Promise<ServicesData> {
+export async function getServicesDataLegacy(): Promise<LegacyServicesData> {
   const categories = await getServiceCategories();
   
   return {

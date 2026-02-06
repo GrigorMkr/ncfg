@@ -1,5 +1,4 @@
 import { getNews, getNewsArticle, getLatestNews, transformToLegacyNews } from './news';
-import { getServicesDataLegacy } from './services';
 import { getPeople, transformToLegacyPerson, type LegacyPerson } from './people';
 import type { ServicesData } from './types/service';
 
@@ -90,14 +89,6 @@ export async function fetchLatestNewsArticles(limit: number = 5): Promise<NewsAr
 }
 
 export async function fetchServicesData(): Promise<ServicesData> {
-  if (USE_STRAPI) {
-    try {
-      return await getServicesDataLegacy();
-    } catch (error) {
-      console.warn('Failed to fetch services from Strapi, falling back to static JSON:', error);
-    }
-  }
-
   const servicesData = await import('@/public/content/ncfg_services.json');
   return servicesData.default as ServicesData;
 }
@@ -125,89 +116,40 @@ export async function fetchPeopleData(): Promise<PeopleData> {
   }
 
   const peopleData = await import('@/public/content/ncfg_finzdorov_people.json');
-  const data = peopleData.default as {
+  const data = peopleData.default as unknown as {
     people: Array<{
-      id: string;
+      id: number;
       fullName: string;
-      isTeam: boolean;
+      position: string;
+      team: { title: string };
+      isTeamMember: boolean;
       isExpert: boolean;
-      notes?: string | null;
-      team?: {
-        unit: string;
-        title: string;
-        department: string | null;
-      } | null;
-      expertProfile?: {
-        headline?: string | null;
-        roles?: string[];
-        specialization?: string | null;
-        organization?: string | null;
-        registry?: string | null;
-        experienceYears?: number | null;
-        experienceText?: string | null;
-        metrics?: {
-          courseParticipants?: string | null;
-          moneySavedRub?: string | null;
-          returnedTaxesRub?: string | null;
-          eventsCount?: string | null;
-          audienceSize?: string | null;
-        };
-        activities?: string[];
-        education?: string[];
-        background?: string[];
-        statuses?: string[];
-        products?: string[];
-        books?: string[];
-        mediaMentions?: string[];
-      } | null;
     }>;
     indexes: {
-      teamPeopleIds: string[];
-      expertPeopleIds: string[];
+      teamPeopleIds: number[];
+      expertPeopleIds: number[];
     };
   };
 
   const people: LegacyPerson[] = data.people.map(p => ({
-    id: p.id,
+    id: String(p.id),
     fullName: p.fullName,
-    isTeam: p.isTeam,
+    isTeam: p.isTeamMember,
     isExpert: p.isExpert,
-    notes: p.notes || null,
-    team: p.team ? {
-      unit: p.team.unit || '',
-      title: p.team.title || '',
-      department: p.team.department || null,
-    } : null,
-    expertProfile: p.expertProfile ? {
-      headline: p.expertProfile.headline || null,
-      roles: p.expertProfile.roles || [],
-      specialization: p.expertProfile.specialization || null,
-      organization: p.expertProfile.organization || null,
-      registry: p.expertProfile.registry || null,
-      experienceYears: p.expertProfile.experienceYears || null,
-      experienceText: p.expertProfile.experienceText || null,
-      metrics: {
-        courseParticipants: p.expertProfile.metrics?.courseParticipants || null,
-        moneySavedRub: p.expertProfile.metrics?.moneySavedRub || null,
-        returnedTaxesRub: p.expertProfile.metrics?.returnedTaxesRub || null,
-        eventsCount: p.expertProfile.metrics?.eventsCount || null,
-        audienceSize: p.expertProfile.metrics?.audienceSize || null,
-      },
-      activities: p.expertProfile.activities || [],
-      education: p.expertProfile.education || [],
-      background: p.expertProfile.background || [],
-      statuses: p.expertProfile.statuses || [],
-      products: p.expertProfile.products || [],
-      books: p.expertProfile.books || [],
-      mediaMentions: p.expertProfile.mediaMentions || [],
-    } : null,
+    notes: null,
+    team: {
+      unit: '',
+      title: p.position || p.team?.title || '',
+      department: null,
+    },
+    expertProfile: null,
     photoUrl: null,
   }));
 
   return {
     people,
-    teamPeopleIds: data.indexes.teamPeopleIds,
-    expertPeopleIds: data.indexes.expertPeopleIds,
+    teamPeopleIds: data.indexes.teamPeopleIds.map(String),
+    expertPeopleIds: data.indexes.expertPeopleIds.map(String),
   };
 }
 
