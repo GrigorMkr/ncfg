@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header, Post, Footer } from "@/widgets";
 import homeData from "@/public/content/home.json";
-import { fetchNewsArticle, fetchLatestNewsArticles } from "@/shared/api/data-provider";
+import { fetchNewsArticle, fetchLatestNewsArticles, fetchNewsArticles } from "@/shared/api/data-provider";
+
 export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const articles = await fetchNewsArticles();
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
