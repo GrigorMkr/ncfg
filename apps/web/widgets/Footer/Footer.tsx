@@ -51,10 +51,12 @@ export function Footer({ data }: FooterProps) {
                 email={data.contacts.email}
                 legalAddress={data.contacts.legalAddress}
               />
+              <div className="md:hidden mt-6">
+                <MapWithAddress />
+              </div>
             </div>
 
             <div className="animate-fade-in-up animate-delay-100">
-              <h3 className="font-semibold mb-5 text-white/95">Навигация</h3>
               <FooterNav items={FOOTER_NAV} />
             </div>
 
@@ -72,7 +74,9 @@ export function Footer({ data }: FooterProps) {
             )}
           </div>
 
-          <MapWithAddress />
+          <div className="hidden md:block">
+            <MapWithAddress />
+          </div>
         </div>
         </MapHoverProvider>
 

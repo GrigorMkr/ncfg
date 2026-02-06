@@ -22,6 +22,7 @@ export function FooterNav({ items }: FooterNavProps) {
         <span className="font-semibold text-white/95">Навигация</span>
         <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
+      <h3 className="hidden md:block font-semibold mb-5 text-white/95">Навигация</h3>
       <ul className={`space-y-2 overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100 mt-3' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}`}>
         {items.map((item) => (
           <li key={item.label}>
