@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
+import { getAssetPath } from "@/shared/lib/getAssetPath";
 import type { ProductItem } from "@/shared/content";
 import { ANIMATION } from "@/shared/constants";
 
@@ -15,6 +16,7 @@ interface ProductCardProps {
 
 export const ProductCard = memo(function ProductCard({ product, index }: ProductCardProps) {
   const [loaded, setLoaded] = useState(false);
+  const imageSrc = getAssetPath(product.image);
   const isComingSoon = !!product.badge;
   const delay = Math.min(index * ANIMATION.DELAY_STEP, ANIMATION.DELAY_MAX);
 
@@ -31,7 +33,7 @@ export const ProductCard = memo(function ProductCard({ product, index }: Product
       <div className="absolute inset-0 bg-gradient-to-br from-[#0ea5e9]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
       <div className="aspect-[16/9] relative overflow-hidden bg-slate-100">
         <Image
-          src={product.image}
+          src={imageSrc}
           alt=""
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, Layers } from "lucide-react";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
+import { getAssetPath } from "@/shared/lib/getAssetPath";
 
 interface Service {
   id?: string;
@@ -18,7 +19,8 @@ interface ServiceCardProps {
 }
 
 export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardProps) {
-  const hasImage = Boolean(service.image);
+  const imageSrc = getAssetPath(service.image);
+  const hasImage = Boolean(imageSrc);
   return (
     <article
       className={cn(
@@ -31,7 +33,7 @@ export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardPro
       <div className="aspect-[16/9] relative overflow-hidden bg-slate-800">
         {hasImage ? (
           <Image
-            src={service.image!}
+            src={imageSrc}
             alt={service.title}
             fill
             className="object-cover group-hover:scale-[1.05] transition-transform duration-500 ease-out"

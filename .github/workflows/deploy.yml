@@ -36,6 +36,7 @@ jobs:
         working-directory: apps/web
         env:
           GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_BASE_PATH: '/ncfg'
         run: npm run build
 
       - name: Upload artifact
