@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Header, BlogPosts, Footer } from "@/widgets";
 import homeData from "@/public/content/home.json";
 import { fetchLatestNewsArticles } from "@/shared/api/data-provider";
-import { REVALIDATE } from "@/shared/config/design-tokens";
-
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Новости и статьи — НЦФГ",

@@ -10,9 +10,7 @@ import {
 } from "@/widgets";
 import homeData from "@/public/content/home.json";
 import servicesData from "@/public/content/ncfg_services.json";
-import { REVALIDATE } from "@/shared/config/design-tokens";
-
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Для компаний — Корпоративные программы | НЦФГ",

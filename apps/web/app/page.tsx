@@ -9,9 +9,9 @@ import { LeadForm } from "@/widgets/LeadForm";
 import { Footer } from "@/widgets/Footer";
 import homeData from "@/public/content/home.json";
 import { fetchLatestNewsArticles } from "@/shared/api/data-provider";
-import { REVALIDATE, SPACING } from "@/shared/config/design-tokens";
+import { SPACING } from "@/shared/config/design-tokens";
 
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 export default async function Home() {
   const { sections } = homeData;

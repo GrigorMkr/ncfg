@@ -3,9 +3,7 @@ import { notFound } from "next/navigation";
 import { Header, Post, Footer } from "@/widgets";
 import homeData from "@/public/content/home.json";
 import { fetchNewsArticle, fetchLatestNewsArticles } from "@/shared/api/data-provider";
-import { REVALIDATE } from "@/shared/config/design-tokens";
-
-export const revalidate = REVALIDATE.DEFAULT;
+export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;

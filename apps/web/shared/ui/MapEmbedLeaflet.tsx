@@ -27,6 +27,7 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
     const initMap = async () => {
       const L = (await import("leaflet")).default;
+      // @ts-expect-error CSS import for leaflet styles
       await import("leaflet/dist/leaflet.css");
 
       const { LAT, LNG, ZOOM } = MAP;
