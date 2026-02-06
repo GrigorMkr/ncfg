@@ -29,14 +29,14 @@ export function MapWithAddress() {
     <div className={`${SECTION.MAP_MT} animate-fade-in-up`}>
       <button
         type="button"
-        className="md:hidden flex items-center justify-between w-full text-white/70 hover:text-white transition-colors py-2"
+        className="md:hidden flex items-center justify-between w-full text-white/70 hover:text-white transition-colors py-3 border-b border-white/10"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="font-semibold text-white/95">Как нас найти</span>
-        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       <h3 className={`hidden md:block font-semibold ${SECTION.MAP_TITLE_MB} text-white/95`}>Как нас найти</h3>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}`}>
+      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[600px] opacity-100 mt-4' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100 md:mt-0'}`}>
         <MapEmbedLeaflet isHovered={isHovered} />
       </div>
     </div>
