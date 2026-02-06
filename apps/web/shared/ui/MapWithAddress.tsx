@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
+import { ChevronDown } from "lucide-react";
 import { useMapHover } from "@/shared/context/MapHoverContext";
 import { MAP, SECTION } from "@/shared/config/design-tokens";
 
@@ -21,11 +23,22 @@ const MapEmbedLeaflet = dynamic(
 
 export function MapWithAddress() {
   const { isHovered } = useMapHover();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={`${SECTION.MAP_MT} animate-fade-in-up`}>
-      <h3 className={`font-semibold ${SECTION.MAP_TITLE_MB} text-white/95`}>Как нас найти</h3>
-      <MapEmbedLeaflet isHovered={isHovered} />
+      <button
+        type="button"
+        className="md:hidden flex items-center justify-between w-full text-white/70 hover:text-white transition-colors py-2"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="font-semibold text-white/95">Как нас найти</span>
+        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      <h3 className={`hidden md:block font-semibold ${SECTION.MAP_TITLE_MB} text-white/95`}>Как нас найти</h3>
+      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px] opacity-100 mt-4' : 'max-h-0 opacity-0 md:max-h-none md:opacity-100'}`}>
+        <MapEmbedLeaflet isHovered={isHovered} />
+      </div>
     </div>
   );
 }
