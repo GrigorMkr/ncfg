@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getAssetPath } from "@/shared/lib/getAssetPath";
 
 interface PostFigureProps {
   title: string;
@@ -6,14 +7,15 @@ interface PostFigureProps {
 }
 
 export function PostFigure({ title, anonsImage }: PostFigureProps) {
-  const hasImage = Boolean(anonsImage);
+  const imageSrc = getAssetPath(anonsImage);
+  const hasImage = Boolean(imageSrc);
 
   return (
     <figure className="mt-8 mb-10">
       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[#E2E8F0] bg-[#F8FAFC]">
         {hasImage ? (
           <Image
-            src={anonsImage as string}
+            src={imageSrc}
             alt={title}
             fill
             sizes="(min-width: 1024px) 760px, 100vw"

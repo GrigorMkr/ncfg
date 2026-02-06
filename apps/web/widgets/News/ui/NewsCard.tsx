@@ -2,6 +2,7 @@ import { memo } from "react";
 import Image from "next/image";
 import { Calendar } from "lucide-react";
 import Link from "next/link";
+import { getAssetPath } from "@/shared/lib/getAssetPath";
 
 interface NewsCardProps {
   id: string;
@@ -13,12 +14,13 @@ interface NewsCardProps {
 }
 
 export const NewsCard = memo(function NewsCard({ title, date, excerpt, href, image }: NewsCardProps) {
+  const imageSrc = getAssetPath(image);
   return (
     <article className="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 hover:border-[#0ea5e9]/40 hover:shadow-[0_20px_40px_-12px_rgba(14,165,233,0.2)] hover:-translate-y-2 transition-all duration-300">
       <div className="aspect-[16/9] relative overflow-hidden bg-slate-800">
-        {image ? (
+        {imageSrc ? (
           <Image
-            src={image}
+            src={imageSrc}
             alt={title}
             fill
             className="object-cover group-hover:scale-[1.05] transition-transform duration-500 ease-out"
