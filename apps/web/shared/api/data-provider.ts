@@ -5,11 +5,13 @@ import type { ServicesData } from './types/service';
 const STRAPI_URL = process.env.STRAPI_URL;
 const USE_STRAPI = Boolean(STRAPI_URL && process.env.STRAPI_API_TOKEN);
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 function normalizeImagePath(src: string | null | undefined): string | null {
   if (!src) return null;
   if (src.startsWith('http')) return src;
   const path = src.startsWith('/') ? src : `/${src}`;
-  return encodeURI(path);
+  return `${BASE_PATH}${encodeURI(path)}`;
 }
 
 export interface NewsArticleData {
