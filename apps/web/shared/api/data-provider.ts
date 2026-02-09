@@ -5,6 +5,13 @@ import type { ServicesData } from './types/service';
 const STRAPI_URL = process.env.STRAPI_URL;
 const USE_STRAPI = Boolean(STRAPI_URL && process.env.STRAPI_API_TOKEN);
 
+function normalizeImagePath(src: string | null | undefined): string | null {
+  if (!src) return null;
+  if (src.startsWith('http')) return src;
+  const path = src.startsWith('/') ? src : `/${src}`;
+  return encodeURI(path);
+}
+
 export interface NewsArticleData {
   id: string;
   title: string;
@@ -29,11 +36,7 @@ export async function fetchNewsArticles(): Promise<NewsArticleData[]> {
   const articles = newsData.default as NewsArticleData[];
   return articles.map(article => ({
     ...article,
-    anonsImage: article.anonsImage 
-      ? (article.anonsImage.startsWith('/') || article.anonsImage.startsWith('http') 
-          ? article.anonsImage 
-          : `/${article.anonsImage}`)
-      : null,
+    anonsImage: normalizeImagePath(article.anonsImage),
   }));
 }
 
@@ -56,11 +59,7 @@ export async function fetchNewsArticle(slug: string): Promise<NewsArticleData | 
   if (!article) return null;
   return {
     ...article,
-    anonsImage: article.anonsImage 
-      ? (article.anonsImage.startsWith('/') || article.anonsImage.startsWith('http') 
-          ? article.anonsImage 
-          : `/${article.anonsImage}`)
-      : null,
+    anonsImage: normalizeImagePath(article.anonsImage),
   };
 }
 
@@ -80,11 +79,7 @@ export async function fetchLatestNewsArticles(limit: number = 5): Promise<NewsAr
     .slice(0, limit);
   return articles.map(article => ({
     ...article,
-    anonsImage: article.anonsImage 
-      ? (article.anonsImage.startsWith('/') || article.anonsImage.startsWith('http') 
-          ? article.anonsImage 
-          : `/${article.anonsImage}`)
-      : null,
+    anonsImage: normalizeImagePath(article.anonsImage),
   }));
 }
 
