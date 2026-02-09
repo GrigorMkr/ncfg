@@ -26,8 +26,8 @@ export function HeaderNav({ items }: HeaderNavProps) {
             <Link
               href={item.href}
               className={cn(
-                "nav-link-underline flex items-center gap-2 px-4 py-2.5 rounded-xl text-slate-600 font-medium text-sm",
-                "hover:text-[#0ea5e9] transition-all duration-300"
+                "nav-link-underline flex items-center gap-2 px-4 py-2.5 rounded-xl text-slate-600 dark:text-slate-300 font-medium text-sm",
+                "hover:text-[#0ea5e9] dark:hover:text-[#38bdf8] transition-all duration-300"
               )}
             >
               {item.Icon && (
@@ -42,13 +42,13 @@ export function HeaderNav({ items }: HeaderNavProps) {
               />
             </Link>
             {openDropdown === index && (
-              <div className="absolute top-full left-0 mt-2 py-2 w-52 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200/60 animate-scale-in origin-top">
+              <div className="absolute top-full left-0 mt-2 py-2 w-52 bg-white/95 dark:bg-slate-800/95 backdrop-blur-xl rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-black/30 border border-slate-200/60 dark:border-slate-700/60 animate-scale-in origin-top">
                 <div className="absolute -top-px left-4 right-4 h-px bg-gradient-to-r from-transparent via-[#0ea5e9]/40 to-transparent" />
                 {item.children.map((child) => (
                   <Link
                     key={child.href}
                     href={child.href}
-                    className="block px-4 py-2.5 mx-2 rounded-xl text-slate-600 hover:text-[#0ea5e9] hover:bg-[#0ea5e9]/5 text-sm font-medium transition-all duration-200"
+                    className="block px-4 py-2.5 mx-2 rounded-xl text-slate-600 dark:text-slate-300 hover:text-[#0ea5e9] dark:hover:text-[#38bdf8] hover:bg-[#0ea5e9]/5 dark:hover:bg-[#38bdf8]/10 text-sm font-medium transition-all duration-200"
                   >
                     {child.label}
                   </Link>
@@ -61,8 +61,8 @@ export function HeaderNav({ items }: HeaderNavProps) {
             key={item.href + index}
             href={item.href}
             className={cn(
-              "nav-link-underline flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-600 font-medium text-sm",
-              "hover:text-[#0ea5e9] transition-all duration-300"
+              "nav-link-underline flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-slate-600 dark:text-slate-300 font-medium text-sm",
+              "hover:text-[#0ea5e9] dark:hover:text-[#38bdf8] transition-all duration-300"
             )}
           >
             {item.Icon && (

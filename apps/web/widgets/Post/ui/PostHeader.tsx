@@ -15,10 +15,10 @@ export function PostHeader({ title, tags, createdAt }: PostHeaderProps) {
             {tags[0]}
           </span>
         )}
-        {tags[0] && <span className="text-[#94A3B8]">•</span>}
-        <time className="text-[#94A3B8]">{formatDate(createdAt)}</time>
+        {tags[0] && <span className="text-[#94A3B8] dark:text-slate-400">•</span>}
+        <time className="text-[#94A3B8] dark:text-slate-400">{formatDate(createdAt)}</time>
       </div>
-      <h1 className="text-[28px] md:text-[36px] lg:text-[42px] leading-tight font-bold text-[#1E3A5F]">
+      <h1 className="text-[28px] md:text-[36px] lg:text-[42px] leading-tight font-bold text-[#1E3A5F] dark:text-white">
         {title}
       </h1>
     </header>

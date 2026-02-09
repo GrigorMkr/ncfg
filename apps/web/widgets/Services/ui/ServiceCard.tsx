@@ -1,8 +1,11 @@
+"use client";
+
 import { memo } from "react";
 import Image from "next/image";
 import { ArrowRight, Layers } from "lucide-react";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
+import { useTranslation } from "@/shared/i18n";
 import { getAssetPath } from "@/shared/lib/getAssetPath";
 
 interface Service {
@@ -19,13 +22,14 @@ interface ServiceCardProps {
 }
 
 export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardProps) {
+  const { t } = useTranslation();
   const imageSrc = getAssetPath(service.image);
   const hasImage = Boolean(imageSrc);
   return (
     <article
       className={cn(
-        "group relative bg-white rounded-2xl overflow-hidden border border-slate-200/80",
-        "hover:border-[#0ea5e9]/40 hover:shadow-[0_20px_40px_-12px_rgba(14,165,233,0.2)] hover:-translate-y-2",
+        "group relative bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80",
+        "hover:border-[#0ea5e9]/40 dark:hover:border-[#38bdf8]/40 hover:shadow-[0_20px_40px_-12px_rgba(14,165,233,0.2)] dark:hover:shadow-[0_20px_40px_-12px_rgba(56,189,248,0.15)] hover:-translate-y-2",
         "transition-all duration-300 flex flex-col"
       )}
     >
@@ -48,14 +52,14 @@ export const ServiceCard = memo(function ServiceCard({ service }: ServiceCardPro
         )}
       </div>
       <div className="p-5 flex flex-col flex-1 relative">
-        <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#0ea5e9] transition-colors">
+        <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-[#0ea5e9] dark:group-hover:text-[#38bdf8] transition-colors">
           {service.title}
         </h3>
-        <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-1">
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 flex-1">
           {service.description}
         </p>
         <Button href={service.href} size="sm" className="gap-2 w-fit group/btn">
-          Подробнее
+          {t.btn.more}
           <ArrowRight
             size={14}
             strokeWidth={1.75}

@@ -1,5 +1,8 @@
+"use client";
+
 import { Section } from "@/shared/ui/Section";
 import { ExpertCard } from "./ui";
+import { useTranslation } from "@/shared/i18n";
 
 interface Expert {
   id: string;
@@ -13,11 +16,12 @@ interface Expert {
 }
 
 interface ExpertsProps {
-  title: string;
+  title?: string;
   experts: Expert[];
 }
 
 export function Experts({ title, experts }: ExpertsProps) {
+  const { t } = useTranslation();
   const displayExperts = experts.filter(
     (e) =>
       e.isExpert &&
@@ -28,7 +32,7 @@ export function Experts({ title, experts }: ExpertsProps) {
   if (displayExperts.length === 0) return null;
 
   return (
-    <Section id="experts" title={title} background="gray">
+    <Section id="experts" title={title || t.pages.aboutExperts} background="gray">
       <div
         className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4
                    overflow-x-auto pb-4 md:overflow-visible md:pb-0

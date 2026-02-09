@@ -13,31 +13,16 @@ import servicesData from "@/public/content/ncfg_services.json";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Для компаний — Корпоративные программы | НЦФГ",
+  title: "For Companies — Corporate Programs | NCFL",
   description:
-    "Программы финансовой грамотности для компаний: well-being, мероприятия для клиентов, разработка материалов.",
+    "Financial literacy programs for companies: well-being, client events, content development.",
   openGraph: {
-    title: "Для компаний — НЦФГ",
+    title: "For Companies — NCFL",
     description:
-      "Корпоративные программы финансовой грамотности от Национального центра финансовой грамотности.",
+      "Corporate financial literacy programs from the National Center for Financial Literacy.",
     type: "website",
   },
 };
-
-const faqItems = [
-  {
-    question: "Как начать сотрудничество?",
-    answer: "Оставьте заявку на сайте или позвоните нам. Мы проведём бесплатную консультацию и предложим оптимальное решение.",
-  },
-  {
-    question: "Работаете ли вы с компаниями из регионов?",
-    answer: "Да, мы работаем по всей России. Онлайн-форматы доступны для любого региона.",
-  },
-  {
-    question: "Можно ли адаптировать программу под нашу компанию?",
-    answer: "Да, мы адаптируем контент и форматы под специфику вашей отрасли и потребности сотрудников.",
-  },
-];
 
 export default function CompaniesPage() {
   const { sections } = homeData;
@@ -48,13 +33,9 @@ export default function CompaniesPage() {
       <Header />
       <main className="min-h-screen animate-page-in">
         <HeroCompanies
-          headline="Программы для компаний"
-          lead="Комплексные решения по финансовой грамотности для вашего бизнеса"
-          primaryCta={{ label: "Оставить заявку", href: "#lead-form" }}
+          primaryCta={{ href: "#lead-form" }}
         />
         <ServiceCatalog
-          title="Наши услуги"
-          lead="Выберите подходящее решение для вашей компании"
           services={businessServices.map(s => ({
             id: s.id,
             title: s.title,
@@ -67,7 +48,7 @@ export default function CompaniesPage() {
           testimonials={sections.Partners.data.testimonials}
         />
         <LeadForm />
-        <FAQ title="Частые вопросы" items={faqItems} />
+        <FAQ translationKey="companiesFaq" />
       </main>
       <Footer data={sections.Footer.data} />
     </>

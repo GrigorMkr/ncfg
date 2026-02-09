@@ -1,6 +1,9 @@
+"use client";
+
 import { Section } from "@/shared/ui/Section";
 import { CheckCircle } from "lucide-react";
 import { ICON_SIZE, STROKE_WIDTH, COLORS } from "@/shared/constants";
+import { useTranslation } from "@/shared/i18n";
 
 interface ServiceDescriptionProps {
   fullDescription?: string;
@@ -8,16 +11,17 @@ interface ServiceDescriptionProps {
 }
 
 export function ServiceDescription({ fullDescription, benefits }: ServiceDescriptionProps) {
+  const { t } = useTranslation();
   return (
-    <Section title="Описание услуги">
+    <Section title={t.sections.serviceDescription}>
       {fullDescription && (
         <div className="max-w-3xl mx-auto mb-10">
-          <p className="text-lg text-slate-600 leading-relaxed">{fullDescription}</p>
+          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">{fullDescription}</p>
         </div>
       )}
       {benefits && benefits.length > 0 && (
         <div className="max-w-2xl mx-auto">
-          <h3 className="text-xl font-semibold text-slate-900 mb-6 text-center">Преимущества</h3>
+          <h3 className="text-xl font-semibold text-slate-900 mb-6 text-center">{t.sections.advantages}</h3>
           <ul className="space-y-4">
             {benefits.map((benefit, index) => (
               <li key={index} className="flex items-start gap-3">
@@ -26,7 +30,7 @@ export function ServiceDescription({ fullDescription, benefits }: ServiceDescrip
                   strokeWidth={STROKE_WIDTH.DEFAULT} 
                   className={`text-[${COLORS.SUCCESS}] shrink-0 mt-0.5`} 
                 />
-                <span className="text-slate-600">{benefit}</span>
+                <span className="text-slate-600 dark:text-slate-300">{benefit}</span>
               </li>
             ))}
           </ul>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Map, Marker } from "leaflet";
 import { MAP } from "@/shared/config/design-tokens";
+import { useTranslation } from "@/shared/i18n";
 
 declare global {
   interface Window {
@@ -21,6 +22,7 @@ interface MapEmbedLeafletProps {
 }
 
 export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const markerRef = useRef<Marker | null>(null);
@@ -124,7 +126,7 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
       `}</style>
       {isHovered && (
         <div className="absolute top-3 left-3 z-[1000] bg-orange-500 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg animate-pulse">
-          Мы здесь!
+          {t.misc.weAreHere}
         </div>
       )}
       <div

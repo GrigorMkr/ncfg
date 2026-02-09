@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useMapHover } from "@/shared/context/MapHoverContext";
+import { useTranslation } from "@/shared/i18n";
 
 interface FooterContactsProps {
   phone: string;
@@ -11,6 +12,7 @@ interface FooterContactsProps {
 }
 
 export function FooterContacts({ phone, email, legalAddress }: FooterContactsProps) {
+  const { t } = useTranslation();
   const { setHovered } = useMapHover();
   const [isActive, setIsActive] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
@@ -39,7 +41,7 @@ export function FooterContacts({ phone, email, legalAddress }: FooterContactsPro
     <div className="space-y-3 text-sm">
       <a
         href={`tel:${phone.replace(/\s/g, "")}`}
-        className="group flex items-center gap-3 text-white/70 hover:text-[#38bdf8] transition-all duration-300 py-1"
+        className="group flex items-center gap-3 text-white hover:text-[#38bdf8] transition-all duration-300 py-1"
       >
         <span className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8]/20 group-hover:scale-110 transition-all duration-300">
           <Phone className="w-4 h-4" strokeWidth={1.75} />
@@ -48,7 +50,7 @@ export function FooterContacts({ phone, email, legalAddress }: FooterContactsPro
       </a>
       <a
         href={`mailto:${email}`}
-        className="group flex items-center gap-3 text-white/70 hover:text-[#38bdf8] transition-all duration-300 py-1"
+        className="group flex items-center gap-3 text-white hover:text-[#38bdf8] transition-all duration-300 py-1"
       >
         <span className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8]/20 group-hover:scale-110 transition-all duration-300">
           <Mail className="w-4 h-4" strokeWidth={1.75} />
@@ -57,7 +59,7 @@ export function FooterContacts({ phone, email, legalAddress }: FooterContactsPro
       </a>
       <button
         type="button"
-        className={`flex items-start gap-3 py-2 cursor-pointer text-left w-full transition-all duration-300 rounded-xl ${isHighlighted ? 'text-[#38bdf8] bg-white/5' : 'text-white/70 hover:bg-white/5'}`}
+        className={`flex items-start gap-3 py-2 cursor-pointer text-left w-full transition-all duration-300 rounded-xl ${isHighlighted ? 'text-[#38bdf8] bg-white/5' : 'text-white hover:bg-white/5'}`}
         onClick={handleAddressClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -69,7 +71,7 @@ export function FooterContacts({ phone, email, legalAddress }: FooterContactsPro
           {legalAddress}
           {isHighlighted && (
             <span className="block text-xs text-orange-400 mt-1 animate-pulse">
-              {isActive ? 'Нажмите еще раз, чтобы скрыть' : 'Смотрите на карте'}
+              {isActive ? t.footerContacts.clickToHide : t.footerContacts.seeOnMap}
             </span>
           )}
         </span>

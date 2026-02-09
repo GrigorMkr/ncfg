@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/shared/lib/cn";
 import { getAssetPath } from "@/shared/lib/getAssetPath";
+import { useTranslation } from "@/shared/i18n";
 
 interface LogoProps {
   href?: string;
@@ -26,13 +27,14 @@ export function Logo({
   className,
   size = "md",
 }: LogoProps) {
+  const { t } = useTranslation();
   const s = sizes[size];
   const logoSrc = getAssetPath("/logo.svg");
   const content = (
     <>
       <Image
         src={logoSrc}
-        alt="НЦФГ"
+        alt={t.misc.ncfg}
         width={s.icon}
         height={s.icon}
         className={cn(
@@ -45,11 +47,11 @@ export function Logo({
           className={cn(
             "font-bold tracking-tight",
             s.text,
-            variant === "default" && "text-slate-900",
+            variant === "default" && "text-slate-900 dark:text-white",
             variant === "light" && "text-white"
           )}
         >
-          НЦФГ
+          {t.misc.ncfg}
         </span>
       )}
     </>

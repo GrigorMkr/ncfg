@@ -5,12 +5,12 @@ import { fetchLatestNewsArticles } from "@/shared/api/data-provider";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Новости и статьи — НЦФГ",
+  title: "News & Articles — NCFL",
   description:
-    "Новости, статьи и публикации о финансовой грамотности от Национального центра финансовой грамотности.",
+    "News, articles and publications on financial literacy from the National Center for Financial Literacy.",
   openGraph: {
-    title: "Новости и статьи — НЦФГ",
-    description: "Актуальные новости и полезные статьи о финансовой грамотности.",
+    title: "News & Articles — NCFL",
+    description: "Latest news and useful articles on financial literacy.",
     type: "website",
   },
 };
@@ -40,8 +40,6 @@ export default async function BlogPage() {
       <Header />
       <main className="min-h-screen animate-page-in">
         <BlogPosts
-          title="Новости и статьи"
-          lead="Актуальные материалы о финансовой грамотности"
           posts={posts}
         />
       </main>

@@ -1,26 +1,30 @@
+"use client";
+
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
-import { ROUTES, HERO_BADGES, HERO_IMAGES } from "@/shared/config";
+import { ROUTES, HERO_IMAGES } from "@/shared/config";
+import { useTranslation } from "@/shared/i18n";
 
 interface HeroProps {
-  headline: string;
+  headline?: string;
   primaryCta?: {
-    label: string;
+    label?: string;
     href: string;
   };
   variant?: keyof Pick<typeof HERO_IMAGES, "home" | "about" | "tvoridobro">;
 }
 
 export function Hero({ headline, primaryCta, variant = "home" }: HeroProps) {
+  const { t } = useTranslation();
   const bgImage = HERO_IMAGES[variant];
   return (
     <section className="relative min-h-[420px] md:min-h-[520px] flex items-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-animated"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-animated dark:brightness-[0.3]"
         style={{ backgroundImage: `url('${bgImage}')` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/80 to-transparent hero-overlay-animated" />
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/80 to-transparent dark:from-slate-950/98 dark:via-slate-900/90 dark:to-slate-900/40 hero-overlay-animated" />
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#0ea5e9]/10 to-transparent pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-[#0ea5e9]/20 blur-3xl pointer-events-none" />
 
@@ -30,10 +34,10 @@ export function Hero({ headline, primaryCta, variant = "home" }: HeroProps) {
             <span className="w-7 h-7 rounded-lg bg-[#38bdf8]/20 flex items-center justify-center">
               <Sparkles size={14} className="text-[#38bdf8]" strokeWidth={1.75} />
             </span>
-            {HERO_BADGES.main}
+            {t.hero.badgeMain}
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-white leading-tight tracking-tight animate-fade-in-up [animation-delay:100ms] opacity-0 [animation-fill-mode:forwards]">
-            {headline}
+            {headline || (variant === "about" ? t.pages.aboutHeadline : variant === "tvoridobro" ? t.pages.tvoridobroHeadline : t.pages.homeHeadline)}
           </h1>
           <div className="mt-8 flex flex-wrap gap-4 animate-fade-in-up [animation-delay:250ms] opacity-0 [animation-fill-mode:forwards]">
             <Button
@@ -41,7 +45,7 @@ export function Hero({ headline, primaryCta, variant = "home" }: HeroProps) {
               size="lg"
               className="gap-2 shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
-              Оставить заявку
+              {t.btn.submitRequest}
               <ArrowRight size={20} strokeWidth={1.75} />
             </Button>
             {primaryCta && (
@@ -49,9 +53,9 @@ export function Hero({ headline, primaryCta, variant = "home" }: HeroProps) {
                 href={primaryCta.href}
                 variant="secondary"
                 size="lg"
-                className="border-2 border-white/60 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm gap-2"
+                className="!bg-white/10 dark:!bg-white/10 border-2 border-white/60 text-white dark:text-white hover:bg-white/20 dark:hover:bg-white/20 backdrop-blur-sm gap-2"
               >
-                {primaryCta.label.replace(/\.{2,}$/, "")}
+                {primaryCta.label || (variant === "about" ? t.misc.ourProjects : t.btn.more)}
                 <ArrowRight size={16} strokeWidth={1.75} />
               </Button>
             )}

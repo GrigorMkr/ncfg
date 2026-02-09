@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   try {
     const article = await fetchNewsArticle(slug);
     if (!article) {
-      return { title: "Статья не найдена — НЦФГ" };
+      return { title: "Not Found — NCFL" };
     }
     return {
-      title: `${article.title} — НЦФГ`,
+      title: `${article.title} — NCFL`,
       description: article.body?.replace(/<[^>]+>/g, "").slice(0, 160),
       openGraph: {
         title: article.title,
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       },
     };
   } catch {
-    return { title: "Статья не найдена — НЦФГ" };
+    return { title: "Not Found — NCFL" };
   }
 }
 

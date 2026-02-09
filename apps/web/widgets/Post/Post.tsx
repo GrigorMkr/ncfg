@@ -32,10 +32,10 @@ export function Post({ post, allPosts = [] }: PostProps) {
     <>
       <section className="relative min-h-[280px] md:min-h-[340px] flex items-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-animated"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-animated dark:brightness-[0.3]"
           style={{ backgroundImage: `url('${heroBg}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/80 to-transparent hero-overlay-animated" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-800/80 to-transparent dark:from-slate-950/98 dark:via-slate-900/90 dark:to-slate-900/40 hero-overlay-animated" />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#0ea5e9]/10 to-transparent pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl py-12 md:py-16">
@@ -46,7 +46,7 @@ export function Post({ post, allPosts = [] }: PostProps) {
               {post.tags[0] && (
                 <span className="font-medium uppercase">{post.tags[0]}</span>
               )}
-              <time>{new Date(post.createdAt).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" })}</time>
+              <time>{new Date(post.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</time>
             </div>
           </div>
         </Container>

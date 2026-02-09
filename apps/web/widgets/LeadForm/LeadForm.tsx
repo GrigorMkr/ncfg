@@ -1,16 +1,28 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { Send } from "lucide-react";
 import { Section } from "@/shared/ui/Section";
 import { Button } from "@/shared/ui/Button";
-import { useLeadForm, LEAD_FORM_FIELDS, LEAD_FORM_PRIVACY } from "@/shared/slices/lead-form";
+import { useLeadForm } from "@/shared/slices/lead-form";
+import type { LeadFormField as LeadFormFieldType } from "@/shared/slices/lead-form";
 import { FormSuccessMessage, FormErrorAlert, LeadFormField } from "./ui";
-
-const GRID_FIELDS = LEAD_FORM_FIELDS.filter((f) => f.type !== "textarea");
-const FULL_WIDTH_FIELDS = LEAD_FORM_FIELDS.filter((f) => f.type === "textarea");
+import { useTranslation } from "@/shared/i18n";
 
 function LeadFormInner() {
+  const { t } = useTranslation();
+
+  const fields: LeadFormFieldType[] = useMemo(() => [
+    { name: "name", label: t.form.name, type: "text", required: true, placeholder: t.form.namePlaceholder },
+    { name: "email", label: t.form.email, type: "email", required: true, placeholder: t.form.emailPlaceholder },
+    { name: "phone", label: t.form.phone, type: "tel", placeholder: t.form.phonePlaceholder },
+    { name: "company", label: t.form.company, type: "text", placeholder: t.form.companyPlaceholder },
+    { name: "message", label: t.form.message, type: "textarea", placeholder: t.form.messagePlaceholder, rows: 4 },
+  ], [t]);
+
+  const gridFields = fields.filter((f) => f.type !== "textarea");
+  const fullWidthFields = fields.filter((f) => f.type === "textarea");
+
   const {
     formData,
     status,
@@ -26,15 +38,15 @@ function LeadFormInner() {
   return (
     <Section
       id="lead-form"
-      title="Оставить заявку"
-      lead="Заполните форму, и мы свяжемся с вами для обсуждения сотрудничества"
+      title={t.sections.leadForm}
+      lead={t.sections.leadFormLead}
       background="gray"
     >
       <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-5">
         {status === "error" && <FormErrorAlert message={errorMessage} />}
 
         <div className="grid sm:grid-cols-2 gap-5">
-          {GRID_FIELDS.map((field) => (
+          {gridFields.map((field) => (
             <LeadFormField
               key={field.name}
               {...field}
@@ -44,7 +56,7 @@ function LeadFormInner() {
           ))}
         </div>
 
-        {FULL_WIDTH_FIELDS.map((field) => (
+        {fullWidthFields.map((field) => (
           <LeadFormField
             key={field.name}
             {...field}
@@ -61,17 +73,17 @@ function LeadFormInner() {
             disabled={status === "loading"}
           >
             {status === "loading" ? (
-              "Отправка..."
+              t.btn.sending
             ) : (
               <>
-                Отправить заявку
+                {t.btn.sendRequest}
                 <Send size={18} strokeWidth={1.75} className="ml-2" />
               </>
             )}
           </Button>
         </div>
 
-        <p className="text-sm text-[#94A3B8]">{LEAD_FORM_PRIVACY}</p>
+        <p className="text-sm text-[#94A3B8] dark:text-slate-400">{t.form.privacy}</p>
       </form>
     </Section>
   );
