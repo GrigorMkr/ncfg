@@ -1,24 +1,21 @@
 import type { Translations } from "./ru";
 
 export const en: Translations = {
-  // Navigation
   nav: {
-    individuals: "For Individuals",
-    companies: "For Business",
+    individuals: "Individuals",
+    companies: "Business",
     tvoriDobro: "Do Good",
     more: "More",
     about: "About Us",
     blog: "Blog",
   },
 
-  // Hero badges
   hero: {
     badgeMain: "National Center for Financial Literacy",
     badgeIndividuals: "For Individuals",
     badgeCompanies: "For Business",
   },
 
-  // Buttons
   btn: {
     submitRequest: "Submit Request",
     more: "Learn More",
@@ -34,7 +31,6 @@ export const en: Translations = {
     toBlog: "Back to Blog",
   },
 
-  // Section titles
   sections: {
     products: "Products",
     productsLead: "Ready-made solutions for financial literacy — from children's programs to corporate tools",
@@ -59,7 +55,6 @@ export const en: Translations = {
     principles: "Our Principles",
   },
 
-  // Stats
   stats: {
     clients: "satisfied corporate clients",
     nps: "program NPS",
@@ -67,7 +62,6 @@ export const en: Translations = {
     regions: "regions involved in projects",
   },
 
-  // Products
   products: [
     {
       title: "Dengin's School & Kids in Business Club",
@@ -83,7 +77,6 @@ export const en: Translations = {
     },
   ],
 
-  // FAQ
   faq: [
     {
       question: "What is financial literacy and why is it important?",
@@ -107,7 +100,6 @@ export const en: Translations = {
     },
   ],
 
-  // Lead form
   form: {
     name: "Name *",
     namePlaceholder: "John Smith",
@@ -124,7 +116,6 @@ export const en: Translations = {
     privacy: "By clicking the button, you agree to the processing of personal data",
   },
 
-  // Post question form
   postQuestion: {
     collapseTitle: "Have a question on another topic?",
     collapseLead: "Ask an NCFL specialist",
@@ -136,7 +127,6 @@ export const en: Translations = {
     contactLabel: "Or contact us directly:",
   },
 
-  // Placeholder news
   news: [
     {
       title: "Young Investor School at the VTB 'Russia Calling' Forum",
@@ -162,27 +152,52 @@ export const en: Translations = {
       title: "NCFL experts featured in Forbes article!",
       excerpt: "Our experts, Natalia Kolbasina and Evgenia Bliskavka, shared their insights in a Forbes article on the women's capital paradox.",
     },
+    {
+      title: "NCFL and the Ministry of Finance Research Institute join forces for financial literacy",
+      excerpt: "A new partnership agreement focused on implementing financial literacy initiatives for employees of organizations.",
+    },
+    {
+      title: "New media project 'Culture of Money' for company leaders, HR and financial education professionals!",
+      excerpt: "A professional platform for sharing knowledge and best practices in corporate financial literacy.",
+    },
+    {
+      title: "NCFL experts participated in Gazprombank podcasts",
+      excerpt: "Anna Dengina and Natalia Kolbasina shared insights on children's financial literacy and family budgeting.",
+    },
+    {
+      title: "New book by Natalia Kolbasina!",
+      excerpt: "Head of the NCFL Consulting Center releases a new book on financial well-being — a valuable resource for professionals.",
+    },
+    {
+      title: "Well-being as a strategic priority",
+      excerpt: "EGIS company's financial intensive: over 200 employees completed comprehensive training across four key areas.",
+    },
   ],
 
-  // Service tabs
+  blogTags: {
+    "НЦФГ": "NCFL",
+    "Эксперты": "Experts",
+    "Партнеры": "Partners",
+    "Возможности - Общая": "Opportunities",
+    "Финансовая грамотность в информационно-библиотечной среде": "Financial Literacy in Libraries",
+    "Финансовая грамотность на рабочих местах": "Financial Literacy at Work",
+  } as Record<string, string>,
+
   serviceTabs: {
     business: "For Business",
     individuals: "For Individuals",
   },
 
-  // Footer
   footer: {
     navigation: "Navigation",
     social: "Contact Us",
     legal: "Documents",
   },
 
-  // Time widget
   time: {
     moscow: "Moscow",
   },
 
-  // Misc
   misc: {
     yearsExperience: "years of experience",
     comingSoon: "Coming Soon",
@@ -205,7 +220,6 @@ export const en: Translations = {
     ourProjects: "Our Projects",
   },
 
-  // Pages
   pages: {
     companiesHeadline: "Programs for Business",
     companiesLead: "Comprehensive financial literacy solutions for your business",
@@ -214,7 +228,7 @@ export const en: Translations = {
     individualsLead: "Learn to manage your personal finances and achieve financial goals",
     individualsProductsTitle: "Our Programs",
     individualsProductsLead: "Choose the right format for financial literacy education",
-    homeHeadline: "For over 20 years, we help clients understand finance — from children's programs to federal initiatives",
+    homeHeadline: "20+ years of building financial literacy — from kids' programs to federal projects",
     blogTitle: "News & Articles",
     blogLead: "Up-to-date materials on financial literacy",
     aboutHeadline: "National Center for Financial Literacy — a leader in financial education since 2005",
@@ -228,7 +242,6 @@ export const en: Translations = {
     readMore: "Read more",
   },
 
-  // Page-specific FAQ
   companiesFaq: [
     { question: "How to start a partnership?", answer: "Submit a request on our website or call us. We will provide a free consultation and offer the best solution." },
     { question: "Do you work with companies from other regions?", answer: "Yes, we work across all of Russia. Online formats are available for any region." },
@@ -248,14 +261,12 @@ export const en: Translations = {
     { question: "In which regions does NCFL operate?", answer: "NCFL implements projects across Russia — in 84 regions. We work both online and offline." },
   ],
 
-  // Individuals products
   individualsProducts: [
     { title: "FinHealth Club", description: "A community for adults: personal finance management, budgeting, goals. Regular webinars and masterclasses from experts." },
     { title: "Financial Education for Kids", description: "Programs and materials for teaching children the basics of finance. Game-based methods for different ages." },
     { title: "Online Courses", description: "Online financial literacy training for all ages. Learn at your own pace and schedule." },
   ],
 
-  // Service page FAQ
   serviceFaq: [
     { question: "How to start a partnership?", answer: "Submit a request on our website or call us. We will provide a free consultation, discuss your goals, and offer the best solution for your company." },
     { question: "How long does project preparation take?", answer: "Timelines depend on the format and scale. Standard solutions can launch in 1-2 weeks, complex programs — from 1 month." },
@@ -263,7 +274,6 @@ export const en: Translations = {
     { question: "Can you customize a program for our company?", answer: "Yes, we approach each project flexibly. We adapt content, formats, and schedules to your industry specifics and employee needs." },
   ],
 
-  // Footer contacts
   footerContacts: {
     clickToHide: "Click again to hide",
     seeOnMap: "See on map",
@@ -271,9 +281,6 @@ export const en: Translations = {
     legalInfo: "Legal Information",
   },
 
-  // ========== JSON content translations ==========
-
-  // Services (from home.json)
   servicesData: {
     individuals: [
       { title: "FinHealth Club", description: "A community for adults: personal finance management, budgeting, goals." },
@@ -287,7 +294,6 @@ export const en: Translations = {
     ],
   },
 
-  // Service catalog (from ncfg_services.json)
   serviceCatalog: {
     wellbeing: { title: "Employee Well-Being Programs", description: "Comprehensive solutions for improving financial literacy and well-being of your company's employees." },
     events: { title: "Client Events", description: "Organization of financial events for your clients and partners." },
@@ -296,7 +302,6 @@ export const en: Translations = {
     kids_education: { title: "Financial Education for Kids", description: "Programs and materials for teaching children the basics of finance." },
   },
 
-  // Partners section
   partnersSection: {
     title: "Partners",
     testimonialsTitle: "Testimonials",
@@ -314,7 +319,6 @@ export const en: Translations = {
     ],
   },
 
-  // Footer data (from home.json)
   footerData: {
     orgName: "Autonomous Non-Profit Organization \"National Center for Financial Literacy\" (ANO \"NCFL\")",
     address: "13/31 Matrosa Zheleznyaka Blvd, Moscow 125239, Russia",
@@ -331,7 +335,46 @@ export const en: Translations = {
     copyrightNotice: "When copying website materials, a hyperlink to www.ncfg.ru is required.",
   },
 
-  // Stats (from home.json)
+  howWeWorkSteps: [
+    { title: "Analysis", description: "We study your situation, goals, and target audience needs" },
+    { title: "Development", description: "We create an individual program tailored to your company's specifics" },
+    { title: "Implementation", description: "We conduct events, webinars, and trainings led by our experts" },
+    { title: "Evaluation", description: "We analyze results and provide a detailed report" },
+  ],
+
+  serviceHowWeWork: {
+    wellbeing: [
+      "Analyze your company's needs",
+      "Develop an individual program",
+      "Conduct training and events",
+      "Evaluate results and adjust",
+    ],
+  } as Record<string, string[]>,
+
+  principlesData: [
+    { id: "methodology", title: "Methodology", description: "We use proven methods and modern approaches to financial literacy education" },
+    { id: "scientific_approach", title: "Scientific Approach", description: "We rely on research and best practices in the field of financial education" },
+    { id: "individual_approach", title: "Individual Approach", description: "We adapt programs to the needs of each client and target audience" },
+    { id: "experience", title: "Experience", description: "Over 20 years of successful work in financial education" },
+    { id: "team", title: "Team", description: "Professional experts with practical experience in the financial market" },
+  ],
+
+  teamMembers: {
+    "Евгения Блискавка": { name: "Evgenia Bliskavka", position: "CEO" },
+    "Анна Зеленцова": { name: "Anna Zelentsova", position: "Director of Development" },
+    "Михаил Сергеев": { name: "Mikhail Sergeev", position: "Financial Consultant" },
+  } as Record<string, { name: string; position: string }>,
+
+  teamPositions: {
+    "Генеральный директор": "CEO",
+    "Директор по развитию": "Director of Development",
+    "Финансовый консультант": "Financial Consultant",
+    "Руководство": "Management",
+    "Эксперты": "Experts",
+    "Основатель": "Founder",
+    "Руководитель НЦФГ": "Head of NCFL",
+  } as Record<string, string>,
+
   statsData: {
     since: { label: "years", value: "since 2005" },
     corporate_clients: { label: "satisfied corporate clients", value: "3,502" },

@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { Section } from "@/shared/ui/Section";
 import { PostCard, type PostCardPost } from "@/entities/Post";
 import { ANIMATION } from "@/shared/config/design-tokens";
@@ -19,6 +20,20 @@ interface BlogPostsProps {
 
 export function BlogPosts({ title, lead, posts }: BlogPostsProps) {
   const { t } = useTranslation();
+
+  const translatedPosts = useMemo(
+    () =>
+      posts.map((post) => {
+        const idx = parseInt(post.id, 10) - 1;
+        return {
+          ...post,
+          title: t.news[idx]?.title ?? post.title,
+          tags: post.tags.map((tag) => (t.blogTags as Record<string, string>)[tag] ?? tag),
+        };
+      }),
+    [posts, t]
+  );
+
   return (
     <>
       <section className="relative min-h-[320px] md:min-h-[400px] flex items-center overflow-hidden">
@@ -41,7 +56,7 @@ export function BlogPosts({ title, lead, posts }: BlogPostsProps) {
       </section>
       <Section id="blog" title="" lead="" background="gray">
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-        {posts.map((post, i) => (
+        {translatedPosts.map((post, i) => (
           <div
             key={post.id}
             className="animate-fade-in-up opacity-0"

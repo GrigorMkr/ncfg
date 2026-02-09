@@ -62,22 +62,21 @@ export function Header() {
           <Logo href={ROUTES.HOME} showWordmark size="md" className="shrink-0 transition-transform hover:scale-[1.02]" />
           <HeaderNav items={navItems} />
 
-          <div className="flex items-center gap-1.5 md:gap-2 ml-auto">
+          <div className="flex items-center gap-1 md:gap-1.5 ml-auto">
+            <MoscowTimeWidget locale={locale} />
             <LanguageSwitcher />
             <ThemeToggle />
 
             <a
               href={ctaHref}
-              className="hidden sm:inline-flex items-center gap-2 h-10 px-5 md:h-11 md:px-6 text-sm md:text-base font-semibold rounded-xl
+              className="hidden sm:inline-flex items-center gap-1.5 h-9 px-4 text-sm font-semibold rounded-xl
                 bg-gradient-to-r from-[#0ea5e9] to-[#38bdf8] text-white
                 shadow-lg shadow-[#0ea5e9]/25 hover:shadow-xl hover:shadow-[#0ea5e9]/35
-                hover:scale-[1.03] active:scale-[0.98] transition-all duration-300"
+                hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 whitespace-nowrap"
             >
-              <Send size={16} strokeWidth={2} />
+              <Send size={14} strokeWidth={2} />
               {t.btn.submitRequest}
             </a>
-
-            <MoscowTimeWidget locale={locale} />
 
             <button
               type="button"

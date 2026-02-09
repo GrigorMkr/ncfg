@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { Section } from "@/shared/ui/Section";
 import { PrincipleCard } from "./ui";
 import { useTranslation } from "@/shared/i18n";
@@ -18,7 +19,23 @@ interface PrinciplesProps {
 
 export function Principles({ title, principles }: PrinciplesProps) {
   const { t } = useTranslation();
-  const sortedPrinciples = [...principles].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+  const translatedPrinciples = useMemo(
+    () =>
+      principles.map((p) => {
+        const found = t.principlesData.find(
+          (tp) => tp.id === p.id
+        );
+        return {
+          ...p,
+          title: found?.title ?? p.title,
+          description: found?.description ?? p.description,
+        };
+      }),
+    [principles, t]
+  );
+
+  const sortedPrinciples = [...translatedPrinciples].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   return (
     <Section id="principles" title={title || t.sections.principles} background="gray">

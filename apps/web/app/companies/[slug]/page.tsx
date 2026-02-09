@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: PageProps) {
         />
         {service.facts && <ServiceFacts facts={service.facts} />}
         {howWeWorkSteps && howWeWorkSteps.length > 0 && (
-          <HowWeWork steps={howWeWorkSteps} />
+          <HowWeWork steps={howWeWorkSteps} serviceId={slug} />
         )}
         {service.examples && service.examples.length > 0 && (
           <ServiceExamples examples={service.examples} />

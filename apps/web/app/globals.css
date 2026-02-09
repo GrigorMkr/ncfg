@@ -53,13 +53,12 @@
   --transition-slow: 350ms cubic-bezier(0.4,0,0.2,1);
 }
 
-/* === Тёмная тема === */
 .dark {
   --color-primary: #ffffff;
   --color-secondary: #7dd3fc;
   --color-accent: #38bdf8;
   --color-accent-soft: #0ea5e9;
-  --color-white: #0f172a;
+  --color-white: #ffffff;
   --color-gray-50: #0f172a;
   --color-gray-100: #1e293b;
   --color-gray-200: #334155;
@@ -79,7 +78,6 @@
   --shadow-glow: 0 0 40px -10px rgba(56,189,248,0.4);
 }
 
-/* Dark mode: force all text to white */
 .dark,
 .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
   color: #ffffff;
@@ -90,7 +88,6 @@
   color: inherit;
 }
 
-/* Slate text → white in dark mode (Tailwind utility overrides) */
 .dark .text-slate-900 { color: #ffffff !important; }
 .dark .text-slate-800 { color: #ffffff !important; }
 .dark .text-slate-700 { color: #ffffff !important; }
@@ -99,7 +96,6 @@
 .dark .text-slate-400 { color: #ffffff !important; }
 .dark .text-slate-300 { color: #ffffff !important; }
 
-/* Gray text → white in dark mode */
 .dark .text-gray-900 { color: #ffffff !important; }
 .dark .text-gray-800 { color: #ffffff !important; }
 .dark .text-gray-700 { color: #ffffff !important; }
@@ -107,14 +103,12 @@
 .dark .text-gray-500 { color: #ffffff !important; }
 .dark .text-gray-400 { color: #ffffff !important; }
 
-/* Explicit dark:text- overrides still take precedence */
 .dark .dark\:text-white { color: #ffffff !important; }
 .dark .dark\:text-slate-100 { color: #ffffff !important; }
 .dark .dark\:text-slate-200 { color: #ffffff !important; }
 .dark .dark\:text-slate-300 { color: #ffffff !important; }
 .dark .dark\:text-slate-400 { color: #ffffff !important; }
 
-/* Specific color-coded text that should stay colored */
 .dark .text-\[\#0ea5e9\] { color: #38bdf8 !important; }
 .dark .text-\[\#10B981\] { color: #34d399 !important; }
 
@@ -348,7 +342,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Плавная смена темы */
 html.dark body,
 html:not(.dark) body {
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -498,7 +491,6 @@ html:not(.dark) body {
   color: var(--color-gray-600);
 }
 
-/* Leaflet map — метка появляется при наведении на адрес */
 .map-marker-orange {
   background: none !important;
   border: none !important;

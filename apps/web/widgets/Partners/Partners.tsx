@@ -45,7 +45,6 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
   const [activeCategory, setActiveCategory] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
-  // Translate category names
   const translatedCategories = useMemo(() =>
     clientsCarousel.categories.map((cat, i) => {
       const catId = (cat as { id?: string }).id ?? CATEGORY_IDS[i];
@@ -58,7 +57,6 @@ export function Partners({ clientsCarousel, testimonials }: PartnersProps) {
     [clientsCarousel.categories, t]
   );
 
-  // Translate testimonials
   const translatedTestimonials = useMemo(() =>
     testimonials.items.map((item, i) => ({
       ...item,

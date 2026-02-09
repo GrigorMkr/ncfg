@@ -20,7 +20,6 @@ export function ServiceHero({
 }: ServiceHeroProps) {
   const { t } = useTranslation();
 
-  // Translate service title/description if available
   const catKey = serviceId as keyof typeof t.serviceCatalog | undefined;
   const catData = catKey ? t.serviceCatalog[catKey] : undefined;
   const displayTitle = catData?.title ?? title;

@@ -23,7 +23,6 @@ interface ServiceCatalogProps {
 export function ServiceCatalog({ title, lead, services }: ServiceCatalogProps) {
   const { t } = useTranslation();
 
-  // Translate service titles/descriptions from catalog
   const translatedServices = useMemo(() =>
     services.map((s) => {
       const catKey = s.id as keyof typeof t.serviceCatalog;

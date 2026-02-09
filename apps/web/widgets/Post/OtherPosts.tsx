@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { PostCard, type PostCardPost } from "@/entities/Post";
 import { Button } from "@/shared/ui/Button";
 import { ROUTES } from "@/shared/config";
@@ -12,6 +13,19 @@ interface OtherPostsProps {
 export function OtherPosts({ posts }: OtherPostsProps) {
   const { t } = useTranslation();
 
+  const translatedPosts = useMemo(
+    () =>
+      posts.map((post) => {
+        const idx = parseInt(post.id, 10) - 1;
+        return {
+          ...post,
+          title: t.news[idx]?.title ?? post.title,
+          tags: post.tags.map((tag) => (t.blogTags as Record<string, string>)[tag] ?? tag),
+        };
+      }),
+    [posts, t]
+  );
+
   if (posts.length === 0) return null;
 
   return (
@@ -21,7 +35,7 @@ export function OtherPosts({ posts }: OtherPostsProps) {
           {t.sections.otherPosts}
         </h2>
         <div className="flex flex-col items-center gap-6">
-          {posts.map((post) => (
+          {translatedPosts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
         </div>

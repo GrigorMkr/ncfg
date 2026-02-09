@@ -40,7 +40,6 @@ export function Footer({ data }: FooterProps) {
     { label: t.nav.blog, href: ROUTES.BLOG },
   ], [t]);
 
-  // Translate social links
   const translatedSocial = useMemo(() =>
     data.social.map((s) => {
       const key = s.id as keyof typeof t.footerData.social | undefined;
@@ -52,7 +51,6 @@ export function Footer({ data }: FooterProps) {
     [data.social, t]
   );
 
-  // Translate legal links
   const translatedLegalLinks = useMemo(() =>
     data.legalLinks.map((l) => {
       const key = (l as { id?: string }).id as keyof typeof t.footerData.legalLinks | undefined;
@@ -64,7 +62,6 @@ export function Footer({ data }: FooterProps) {
     [data.legalLinks, t]
   );
 
-  // Translate legal documents
   const translatedLegalDocs = useMemo(() => {
     if (!data.legalDocuments) return undefined;
     return {

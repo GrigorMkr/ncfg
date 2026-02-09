@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { Section } from "@/shared/ui/Section";
 import { FeaturedCard, CompactCard } from "./ui";
 import { useTranslation } from "@/shared/i18n";
@@ -24,7 +25,7 @@ interface TeamProps {
   members: TeamMember[];
 }
 
-const FEATURED_TITLES = ["Основатель", "Руководитель НЦФГ", "Founder", "Head of NCFL"];
+const FEATURED_TITLES = ["Основатель", "Руководитель НЦФГ", "Founder", "Head of NCFL", "CEO", "Генеральный директор"];
 
 function isFeatured(member: TeamMember): boolean {
   const title = member.team?.title ?? "";
@@ -33,7 +34,26 @@ function isFeatured(member: TeamMember): boolean {
 
 export function Team({ title, members }: TeamProps) {
   const { t } = useTranslation();
-  const teamMembers = members.filter((m) => m.isTeam && m.team);
+
+  const translatedMembers = useMemo(
+    () =>
+      members.map((m) => {
+        const memberT = (t.teamMembers as Record<string, { name: string; position: string }>)[m.fullName];
+        const positionT = m.team?.title
+          ? (t.teamPositions as Record<string, string>)[m.team.title] ?? m.team.title
+          : "";
+        return {
+          ...m,
+          fullName: memberT?.name ?? m.fullName,
+          team: m.team
+            ? { ...m.team, title: memberT?.position ?? positionT }
+            : m.team,
+        };
+      }),
+    [members, t]
+  );
+
+  const teamMembers = translatedMembers.filter((m) => m.isTeam && m.team);
   const featured = teamMembers.filter(isFeatured);
   const rest = teamMembers.filter((m) => !isFeatured(m));
 

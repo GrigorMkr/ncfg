@@ -79,7 +79,7 @@ function PostQuestionFormInner({ postTitle }: PostQuestionFormProps) {
               <div>
                 <label
                   htmlFor="question"
-                  className="block text-sm font-medium text-[#1E3A5F] mb-2"
+                  className="block text-sm font-medium text-[#1E3A5F] dark:text-slate-200 mb-2"
                 >
                   {POST_QUESTION.questionLabel}
                 </label>
@@ -92,8 +92,8 @@ function PostQuestionFormInner({ postTitle }: PostQuestionFormProps) {
                     value={formData.question}
                     onChange={handleChange}
                     className={cn(
-                      "w-full px-4 py-3 rounded-lg border border-[#E2E8F0] bg-white resize-none",
-                      "text-[#0F172A] placeholder:text-[#94A3B8]",
+                      "w-full px-4 py-3 rounded-lg border border-[#E2E8F0] dark:border-slate-600 bg-white dark:bg-slate-800 resize-none",
+                      "text-[#0F172A] dark:text-slate-100 placeholder:text-[#94A3B8] dark:placeholder:text-slate-500",
                       "focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[rgba(59,130,246,0.15)]",
                       "transition-all duration-150"
                     )}
@@ -109,7 +109,7 @@ function PostQuestionFormInner({ postTitle }: PostQuestionFormProps) {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-[#1E3A5F] mb-2"
+                    className="block text-sm font-medium text-[#1E3A5F] dark:text-slate-200 mb-2"
                   >
                     {t.form.name}
                   </label>
@@ -121,8 +121,8 @@ function PostQuestionFormInner({ postTitle }: PostQuestionFormProps) {
                     value={formData.name}
                     onChange={handleChange}
                     className={cn(
-                      "w-full px-4 py-3 rounded-lg border border-[#E2E8F0] bg-white",
-                      "text-[#0F172A] placeholder:text-[#94A3B8]",
+                      "w-full px-4 py-3 rounded-lg border border-[#E2E8F0] dark:border-slate-600 bg-white dark:bg-slate-800",
+                      "text-[#0F172A] dark:text-slate-100 placeholder:text-[#94A3B8] dark:placeholder:text-slate-500",
                       "focus:outline-none focus:border-[#3B82F6] focus:ring-2 focus:ring-[rgba(59,130,246,0.15)]",
                       "transition-all duration-150"
                     )}

@@ -30,7 +30,6 @@ function ServicesInner({
   const { t } = useTranslation();
   const { activeTab, onTabChange } = useServicesTab(ServiceTab.BUSINESS);
 
-  // Map translated titles/descriptions onto services
   const translatedIndividuals = useMemo(() =>
     servicesIndividuals.map((s, i) => ({
       ...s,
