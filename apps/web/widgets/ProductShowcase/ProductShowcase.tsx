@@ -1,5 +1,8 @@
+"use client";
+
 import { Section } from "@/shared/ui/Section";
 import { ProductShowcaseItem } from "./ProductShowcaseItem";
+import { useTranslation } from "@/shared/i18n";
 
 interface Product {
   title: string;
@@ -16,10 +19,19 @@ interface ProductShowcaseProps {
 }
 
 export function ProductShowcase({ title, lead, products }: ProductShowcaseProps) {
+  const { t } = useTranslation();
+  const displayTitle = title || t.pages.individualsProductsTitle;
+  const displayLead = lead || t.pages.individualsProductsLead;
+
+  const translatedProducts = products.map((p, i) => ({
+    ...p,
+    title: t.individualsProducts[i]?.title ?? p.title,
+    description: t.individualsProducts[i]?.description ?? p.description,
+  }));
   return (
-    <Section id="products" title={title} lead={lead}>
+    <Section id="products" title={displayTitle} lead={displayLead}>
       <div className="space-y-12 md:space-y-16">
-        {products.map((product, index) => (
+        {translatedProducts.map((product, index) => (
           <div
             key={product.title}
             className="animate-fade-in-up opacity-0"

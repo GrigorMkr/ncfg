@@ -40,17 +40,17 @@ export function Section({
       )}
       <Container className={containerClassName + " relative"}>
         {dividerTop && (
-          <div className="border-t border-slate-200/80 mb-12 md:mb-16" />
+          <div className="border-t border-slate-200/80 dark:border-slate-700/80 mb-12 md:mb-16" />
         )}
         {(title || lead) && (
           <div className="mb-8 md:mb-10 text-center max-w-3xl mx-auto">
             {title && (
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
                 {title}
               </h2>
             )}
             {lead && (
-              <p className="mt-4 text-lg md:text-xl text-slate-600 leading-relaxed">
+              <p className="mt-4 text-lg md:text-xl text-slate-600 dark:text-white/80 leading-relaxed">
                 {lead}
               </p>
             )}

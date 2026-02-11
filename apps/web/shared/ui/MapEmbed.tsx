@@ -6,7 +6,7 @@ const MapEmbedLeaflet = dynamic(() => import("./MapEmbedLeaflet").then((m) => m.
   ssr: false,
   loading: () => (
     <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl aspect-[16/10] min-h-[240px] bg-slate-800 animate-pulse flex items-center justify-center">
-      <span className="text-white/40 text-sm">Загрузка карты…</span>
+      <span className="text-white/40 text-sm">Loading…</span>
     </div>
   ),
 });

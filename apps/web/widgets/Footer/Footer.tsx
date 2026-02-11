@@ -1,9 +1,14 @@
+"use client";
+
+import { useMemo } from "react";
 import { Container } from "@/shared/ui/Container";
 import { Logo } from "@/shared/ui/Logo";
 import { FooterContacts, FooterNav, FooterSocialLinks, FooterDocuments } from "./ui";
 import { MapWithAddress } from "@/shared/ui/MapWithAddress";
 import { MapHoverProvider } from "@/shared/context/MapHoverContext";
-import { FOOTER_NAV, ROUTES } from "@/shared/config";
+import { ROUTES } from "@/shared/config";
+import type { NavItem } from "@/shared/config";
+import { useTranslation } from "@/shared/i18n";
 
 interface LegalDocument {
   label: string;
@@ -15,7 +20,7 @@ interface FooterData {
   organization: { fullName: string; shortName: string };
   contacts: { phone: string; email: string; legalAddress: string };
   social: Array<{ id?: string; label: string; href: string }>;
-  legalLinks: Array<{ label: string; href: string }>;
+  legalLinks: Array<{ id?: string; label: string; href: string }>;
   legalDocuments?: { title: string; items: LegalDocument[] };
   copyright: { years: string; text: string; notice: string };
 }
@@ -25,6 +30,49 @@ interface FooterProps {
 }
 
 export function Footer({ data }: FooterProps) {
+  const { t } = useTranslation();
+
+  const footerNavItems: NavItem[] = useMemo(() => [
+    { label: t.nav.individuals, href: ROUTES.INDIVIDUALS },
+    { label: t.nav.companies, href: ROUTES.COMPANIES },
+    { label: t.nav.tvoriDobro, href: ROUTES.TVORI_DOBRO },
+    { label: t.nav.about, href: ROUTES.ABOUT },
+    { label: t.nav.blog, href: ROUTES.BLOG },
+  ], [t]);
+
+  const translatedSocial = useMemo(() =>
+    data.social.map((s) => {
+      const key = s.id as keyof typeof t.footerData.social | undefined;
+      return {
+        ...s,
+        label: key && t.footerData.social[key] ? t.footerData.social[key] : s.label,
+      };
+    }),
+    [data.social, t]
+  );
+
+  const translatedLegalLinks = useMemo(() =>
+    data.legalLinks.map((l) => {
+      const key = (l as { id?: string }).id as keyof typeof t.footerData.legalLinks | undefined;
+      return {
+        ...l,
+        label: key && t.footerData.legalLinks[key] ? t.footerData.legalLinks[key] : l.label,
+      };
+    }),
+    [data.legalLinks, t]
+  );
+
+  const translatedLegalDocs = useMemo(() => {
+    if (!data.legalDocuments) return undefined;
+    return {
+      title: t.footerData.legalDocsTitle,
+      items: data.legalDocuments.items.map((doc, i) => ({
+        ...doc,
+        label: t.footerData.legalDocs[i] ?? doc.label,
+      })),
+    };
+  }, [data.legalDocuments, t]);
+
   return (
     <footer
       id="contacts"
@@ -43,45 +91,54 @@ export function Footer({ data }: FooterProps) {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
             <div className="animate-fade-in-up">
               <Logo href={ROUTES.HOME} showWordmark variant="light" size="md" className="mb-6 transition-transform hover:scale-[1.02]" />
-              <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
-                {data.organization.fullName}
+              <p className="text-white text-sm leading-relaxed mb-6 max-w-xs">
+                {t.footerData.orgName}
               </p>
               <FooterContacts
                 phone={data.contacts.phone}
                 email={data.contacts.email}
-                legalAddress={data.contacts.legalAddress}
+                legalAddress={t.footerData.address}
               />
+              <div className="md:hidden mt-6">
+                <MapWithAddress />
+              </div>
             </div>
 
             <div className="animate-fade-in-up animate-delay-100">
-              <h3 className="font-semibold mb-5 text-white/95">Навигация</h3>
-              <FooterNav items={FOOTER_NAV} />
+              <FooterNav items={footerNavItems} title={t.footer.navigation} />
             </div>
 
             <div className="animate-fade-in-up animate-delay-200">
-              <FooterSocialLinks social={data.social} legalLinks={data.legalLinks} />
+              <FooterSocialLinks
+                social={translatedSocial}
+                legalLinks={translatedLegalLinks}
+                socialTitle={t.footerContacts.socialNetworks}
+                legalTitle={t.footerContacts.legalInfo}
+              />
             </div>
 
-            {data.legalDocuments && data.legalDocuments.items.length > 0 && (
+            {translatedLegalDocs && translatedLegalDocs.items.length > 0 && (
               <div className="animate-fade-in-up animate-delay-300">
                 <FooterDocuments
-                  title={data.legalDocuments.title}
-                  items={data.legalDocuments.items}
+                  title={translatedLegalDocs.title}
+                  items={translatedLegalDocs.items}
                 />
               </div>
             )}
           </div>
 
-          <MapWithAddress />
+          <div className="hidden md:block">
+            <MapWithAddress />
+          </div>
         </div>
         </MapHoverProvider>
 
         <div className="py-8 border-t border-white/10 relative">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/50">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white">
             <div className="text-center md:text-left">
-              <p className="transition-colors hover:text-white/70">{data.copyright.text}</p>
-              <p className="mt-1 text-white/40 text-xs">{data.copyright.notice}</p>
+              <p className="transition-colors hover:text-white">{t.footerData.copyright}</p>
+              <p className="mt-1 text-white text-xs">{t.footerData.copyrightNotice}</p>
             </div>
           </div>
         </div>

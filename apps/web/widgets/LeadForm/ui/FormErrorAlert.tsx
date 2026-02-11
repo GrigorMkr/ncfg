@@ -6,7 +6,7 @@ interface FormErrorAlertProps {
 
 export function FormErrorAlert({ message }: FormErrorAlertProps) {
   return (
-    <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+    <div className="flex items-center gap-3 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/40 rounded-lg text-red-700 dark:text-red-400">
       <AlertCircle size={20} strokeWidth={1.75} />
       <span>{message}</span>
     </div>

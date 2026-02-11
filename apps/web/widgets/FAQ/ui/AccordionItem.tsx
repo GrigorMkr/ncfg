@@ -17,8 +17,8 @@ export const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggl
   return (
     <div
       className={cn(
-        "border border-slate-200/80 rounded-xl overflow-hidden transition-all duration-300",
-        isOpen && "border-[#0ea5e9]/40 bg-[#0ea5e9]/5 shadow-md"
+        "border border-slate-200/80 dark:border-slate-700/80 rounded-xl overflow-hidden transition-all duration-300 dark:bg-slate-800/50",
+        isOpen && "border-[#0ea5e9]/40 dark:border-[#38bdf8]/40 bg-[#0ea5e9]/5 dark:bg-[#38bdf8]/10 shadow-md"
       )}
       style={{ animationDelay: `${index * (ANIMATION.DURATION_FAST / 2.5)}ms` }}
     >
@@ -45,7 +45,7 @@ export const AccordionItem = memo(function AccordionItem({ item, isOpen, onToggl
           isOpen ? "max-h-96 pb-5" : "max-h-0"
         )}
       >
-        <p className="text-slate-600 leading-relaxed px-5 pr-12">{item.answer}</p>
+        <p className="text-slate-600 dark:text-white/90 leading-relaxed px-5 pr-12">{item.answer}</p>
       </div>
     </div>
   );

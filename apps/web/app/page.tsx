@@ -18,11 +18,11 @@ export default async function Home() {
   let newsItems: { id: string; title: string; date: string; excerpt: string; href: string; image?: string | null }[] = [];
   try {
     const articles = await fetchLatestNewsArticles(SPACING.NEWS_ITEMS_LIMIT);
-    newsItems = articles.map((a) => ({
+      newsItems = articles.map((a) => ({
       id: a.id,
       title: a.title,
-      date: new Date(a.createdAt).toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" }),
-      excerpt: (a.body ? a.body.replace(/<[^>]+>/g, "").slice(0, SPACING.NEWS_EXCERPT_LENGTH) + "…" : "Читать далее"),
+      date: new Date(a.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
+      excerpt: (a.body ? a.body.replace(/<[^>]+>/g, "").slice(0, SPACING.NEWS_EXCERPT_LENGTH) + "…" : ""),
       href: `/blog/${a.slug}`,
       image: a.anonsImage,
     }));
@@ -35,12 +35,10 @@ export default async function Home() {
       <Header />
       <main className="min-h-screen animate-page-in">
         <Hero
-          headline="Более 20 лет помогаем клиентам разбираться в финансах — от программ для детей до федеральных инициатив"
-          primaryCta={sections.Hero.data.primaryCta}
+          primaryCta={{ href: sections.Hero.data.primaryCta.href }}
         />
         <Products />
         <Services
-          title={sections.Services.data.title}
           servicesIndividuals={sections.Services.data.servicesIndividuals}
           servicesBusiness={sections.Services.data.servicesBusiness}
         />
@@ -49,11 +47,9 @@ export default async function Home() {
           testimonials={sections.Partners.data.testimonials}
         />
         <LeadForm />
-        <FAQ title={sections.FAQ.data.title} items={[]} />
+        <FAQ />
         <News
-          title={sections.News.data.title}
           items={newsItems}
-          archiveHref={sections.News.data.links[0]?.href}
         />
       </main>
       <Footer data={sections.Footer.data} />

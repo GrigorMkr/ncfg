@@ -23,8 +23,8 @@ export const LogoCard = memo(function LogoCard({ logo }: LogoCardProps) {
   const handleError = useCallback(() => setImgError(true), []);
 
   const cardClassName = cn(
-    "aspect-[3/2] bg-white rounded-xl border border-slate-200/80 p-4 flex items-center justify-center",
-    "hover:border-[#0ea5e9]/40 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200",
+    "aspect-[3/2] bg-white dark:bg-slate-800/90 rounded-xl border border-slate-200/80 dark:border-slate-700/80 p-4 flex items-center justify-center",
+    "hover:border-[#0ea5e9]/40 dark:hover:border-[#38bdf8]/40 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200",
     logo.href && "group"
   );
 
@@ -41,7 +41,7 @@ export const LogoCard = memo(function LogoCard({ logo }: LogoCardProps) {
       />
     </div>
   ) : (
-    <span className="text-slate-500 text-xs text-center font-medium line-clamp-2">
+    <span className="text-slate-500 dark:text-slate-400 text-xs text-center font-medium line-clamp-2">
       {logo.title}
     </span>
   );

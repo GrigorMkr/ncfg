@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/shared/ui/Button";
 import { cn } from "@/shared/lib/cn";
 import { getProductShowcaseIcon, type ProductShowcaseIcon } from "@/shared/constants";
+import { useTranslation } from "@/shared/i18n";
 
 interface ProductShowcaseItemProps {
   title: string;
@@ -21,6 +24,7 @@ export function ProductShowcaseItem({
   icon,
   reversed = false,
 }: ProductShowcaseItemProps) {
+  const { t } = useTranslation();
   const isExternal = href.startsWith("http");
   const Icon = getProductShowcaseIcon(icon);
 
@@ -49,17 +53,17 @@ export function ProductShowcaseItem({
                 <Icon size={48} strokeWidth={1.5} className="text-white/90" />
               </div>
             ) : (
-              <span className="text-4xl font-bold text-white/20 tracking-wider">НЦФГ</span>
+              <span className="text-4xl font-bold text-white/20 tracking-wider">{t.misc.ncfg}</span>
             )}
           </div>
         )}
       </div>
 
       <div>
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
+        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight">
           {title}
         </h3>
-        <p className="mt-4 text-lg text-slate-600 leading-relaxed">
+        <p className="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
           {description}
         </p>
         <div className="mt-6">
@@ -69,7 +73,7 @@ export function ProductShowcaseItem({
             className="gap-2"
             {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           >
-            Подробнее
+            {t.btn.more}
             {isExternal ? (
               <ExternalLink size={18} strokeWidth={1.75} />
             ) : (

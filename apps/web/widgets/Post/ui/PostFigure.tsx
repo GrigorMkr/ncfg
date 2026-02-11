@@ -24,7 +24,7 @@ export function PostFigure({ title, anonsImage }: PostFigureProps) {
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1E3A5F] to-[#3B82F6]">
-            <span className="text-white/30 text-4xl font-bold">НЦФГ</span>
+            <span className="text-white/30 text-4xl font-bold">NCFL</span>
           </div>
         )}
       </div>

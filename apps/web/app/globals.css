@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --color-primary: #0f172a;
   --color-secondary: #2563eb;
@@ -19,6 +21,8 @@
   --gradient-card: linear-gradient(145deg, rgba(14,165,233,0.08) 0%, rgba(37,99,235,0.04) 100%);
   --background: var(--color-white);
   --foreground: var(--color-gray-900);
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -48,6 +52,65 @@
   --transition-base: 250ms cubic-bezier(0.4,0,0.2,1);
   --transition-slow: 350ms cubic-bezier(0.4,0,0.2,1);
 }
+
+.dark {
+  --color-primary: #ffffff;
+  --color-secondary: #7dd3fc;
+  --color-accent: #38bdf8;
+  --color-accent-soft: #0ea5e9;
+  --color-white: #ffffff;
+  --color-gray-50: #0f172a;
+  --color-gray-100: #1e293b;
+  --color-gray-200: #334155;
+  --color-gray-400: #ffffff;
+  --color-gray-600: #ffffff;
+  --color-gray-900: #ffffff;
+  --gradient-hero: linear-gradient(135deg, #020617 0%, #0f172a 40%, #0c4a6e 100%);
+  --gradient-card: linear-gradient(145deg, rgba(56,189,248,0.08) 0%, rgba(96,165,250,0.04) 100%);
+  --background: #0b1120;
+  --foreground: #ffffff;
+  --color-surface: #1e293b;
+  --color-surface-elevated: #1e293b;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.2);
+  --shadow-md: 0 10px 15px -3px rgba(0,0,0,0.35), 0 4px 6px -4px rgba(0,0,0,0.2);
+  --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.35), 0 8px 10px -6px rgba(0,0,0,0.2);
+  --shadow-glow: 0 0 40px -10px rgba(56,189,248,0.4);
+}
+
+.dark,
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #ffffff;
+}
+
+.dark p, .dark span, .dark li, .dark td, .dark th,
+.dark label, .dark a:not([class*="text-["]):not([class*="text-white"]):not([class*="text-sky"]):not([class*="text-blue"]):not([class*="text-emerald"]):not([class*="text-red"]):not([class*="text-orange"]):not([class*="text-green"]) {
+  color: inherit;
+}
+
+.dark .text-slate-900 { color: #ffffff !important; }
+.dark .text-slate-800 { color: #ffffff !important; }
+.dark .text-slate-700 { color: #ffffff !important; }
+.dark .text-slate-600 { color: #ffffff !important; }
+.dark .text-slate-500 { color: #ffffff !important; }
+.dark .text-slate-400 { color: #ffffff !important; }
+.dark .text-slate-300 { color: #ffffff !important; }
+
+.dark .text-gray-900 { color: #ffffff !important; }
+.dark .text-gray-800 { color: #ffffff !important; }
+.dark .text-gray-700 { color: #ffffff !important; }
+.dark .text-gray-600 { color: #ffffff !important; }
+.dark .text-gray-500 { color: #ffffff !important; }
+.dark .text-gray-400 { color: #ffffff !important; }
+
+.dark .dark\:text-white { color: #ffffff !important; }
+.dark .dark\:text-slate-100 { color: #ffffff !important; }
+.dark .dark\:text-slate-200 { color: #ffffff !important; }
+.dark .dark\:text-slate-300 { color: #ffffff !important; }
+.dark .dark\:text-slate-400 { color: #ffffff !important; }
+
+.dark .text-\[\#0ea5e9\] { color: #38bdf8 !important; }
+.dark .text-\[\#10B981\] { color: #34d399 !important; }
 
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(16px); }
@@ -146,11 +209,21 @@
     radial-gradient(at 80% 0%, rgba(56, 189, 248, 0.06) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(14, 165, 233, 0.05) 0px, transparent 50%);
 }
+.dark .bg-mesh {
+  background-color: rgba(15, 23, 42, 0.85);
+  background-image:
+    radial-gradient(at 40% 20%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(14, 165, 233, 0.06) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(56, 189, 248, 0.05) 0px, transparent 50%);
+}
 
 .glass-panel {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+}
+.dark .glass-panel {
+  background: rgba(30, 41, 59, 0.85);
 }
 
 .animate-slide-down {
@@ -170,6 +243,9 @@
 .card-hover:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px -12px rgba(14, 165, 233, 0.25);
+}
+.dark .card-hover:hover {
+  box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.2);
 }
 
 @keyframes page-in {
@@ -205,6 +281,9 @@
   border-radius: 12px;
   background: linear-gradient(145deg, rgba(14, 165, 233, 0.15) 0%, rgba(56, 189, 248, 0.08) 100%);
   color: var(--color-accent);
+}
+.dark .icon-badge {
+  background: linear-gradient(145deg, rgba(56, 189, 248, 0.18) 0%, rgba(14, 165, 233, 0.10) 100%);
 }
 
 @media (min-width: 768px) {
@@ -263,6 +342,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark body,
+html:not(.dark) body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
@@ -272,6 +356,10 @@ body {
 ::selection {
   background: var(--color-accent);
   color: var(--color-gray-900);
+}
+.dark ::selection {
+  background: var(--color-accent);
+  color: #0f172a;
 }
 
 .post-content {
@@ -403,7 +491,6 @@ body {
   color: var(--color-gray-600);
 }
 
-/* Leaflet map — метка появляется при наведении на адрес */
 .map-marker-orange {
   background: none !important;
   border: none !important;

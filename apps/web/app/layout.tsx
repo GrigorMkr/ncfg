@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import { SmoothAnchor } from "@/shared/ui/SmoothAnchor";
 import { PageBackground } from "@/shared/ui/PageBackground";
+import { ThemeProvider } from "@/shared/ui/ThemeProvider";
+import { LanguageProvider } from "@/shared/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "НЦФГ — Национальный центр финансовой грамотности",
+  title: "NCFL — National Center for Financial Literacy",
   description:
-    "Более 20 лет реализуем проекты по финансовой грамотности. 30 миллионов участников, 84 региона, программы для компаний и частных лиц.",
+    "Over 20 years of financial literacy projects. 30 million participants, 84 regions, programs for companies and individuals.",
   openGraph: {
-    title: "НЦФГ — Национальный центр финансовой грамотности",
+    title: "NCFL — National Center for Financial Literacy",
     description:
-      "Более 20 лет реализуем проекты по финансовой грамотности. 30 миллионов участников, 84 региона.",
+      "Over 20 years of financial literacy projects. 30 million participants, 84 regions.",
     locale: "ru_RU",
     type: "website",
   },
@@ -22,11 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body className="font-sans antialiased">
-        <PageBackground />
-        <SmoothAnchor />
-        {children}
+        <ThemeProvider>
+          <LanguageProvider>
+            <PageBackground />
+            <SmoothAnchor />
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

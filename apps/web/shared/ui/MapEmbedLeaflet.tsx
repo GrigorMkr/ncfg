@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Map, Marker } from "leaflet";
 import { MAP } from "@/shared/config/design-tokens";
+import { useTranslation } from "@/shared/i18n";
 
 declare global {
   interface Window {
@@ -11,8 +12,9 @@ declare global {
 }
 
 const ORANGE_MARKER_SVG = (w: number, h: number, animated: boolean) => `
-<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 36" fill="#f97316" class="${animated ? 'map-marker-animated' : ''}">
+<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 24 36" fill="${animated ? '#ea580c' : '#f97316'}" style="filter: drop-shadow(0 4px 12px rgba(249, 115, 22, ${animated ? '0.8' : '0.4'}));">
   <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24c0-6.6-5.4-12-12-12zm0 17c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"/>
+  ${animated ? '<circle cx="12" cy="12" r="3" fill="white"/>' : ''}
 </svg>`;
 
 interface MapEmbedLeafletProps {
@@ -20,6 +22,7 @@ interface MapEmbedLeafletProps {
 }
 
 export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const markerRef = useRef<Marker | null>(null);
@@ -106,21 +109,26 @@ export function MapEmbedLeaflet({ isHovered = false }: MapEmbedLeafletProps) {
 
   return (
     <div
-      className={`map-embed-wrapper rounded-2xl overflow-hidden border border-white/10 shadow-xl relative ${isHovered ? "map-address-hovered" : ""}`}
+      className={`map-embed-wrapper rounded-2xl overflow-hidden shadow-xl relative transition-all duration-500 ${isHovered ? "ring-2 ring-orange-500 ring-offset-2 ring-offset-slate-900 shadow-orange-500/20" : "border border-white/10"}`}
       style={{ aspectRatio: MAP.ASPECT_RATIO, minHeight: MAP.MIN_HEIGHT_PX }}
     >
       <style jsx global>{`
         .map-marker-bounce {
-          animation: marker-bounce 0.5s ease-out;
+          animation: marker-bounce 0.6s ease-out infinite;
         }
         @keyframes marker-bounce {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-15px); }
+          50% { transform: translateY(-10px); }
         }
         .map-marker-orange {
-          filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.4));
+          transition: all 0.3s ease-out;
         }
       `}</style>
+      {isHovered && (
+        <div className="absolute top-3 left-3 z-[1000] bg-orange-500 text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-lg animate-pulse">
+          {t.misc.weAreHere}
+        </div>
+      )}
       <div
         ref={containerRef}
         className="w-full h-full bg-slate-800"

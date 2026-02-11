@@ -17,10 +17,10 @@ export function ServiceBlock({ title, description, items }: ServiceBlockProps) {
   return (
     <div className="mb-12 last:mb-0">
       <div className="mb-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+        <h2 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-2">
           {title}
         </h2>
-        <p className="text-slate-600 text-lg">{description}</p>
+        <p className="text-slate-600 dark:text-slate-300 text-lg">{description}</p>
       </div>
 
       {renderGrid(items)}

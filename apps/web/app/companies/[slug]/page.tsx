@@ -52,43 +52,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!service) {
     return {
-      title: "Услуга не найдена — НЦФГ",
+      title: "Not Found — NCFL",
     };
   }
 
   return {
-    title: `${service.title} — НЦФГ`,
+    title: `${service.title} — NCFL`,
     description: service.shortDescription,
     openGraph: {
-      title: `${service.title} — НЦФГ`,
+      title: `${service.title} — NCFL`,
       description: service.shortDescription,
       type: "website",
     },
   };
 }
 
-const faqItems = [
-  {
-    question: "Как начать сотрудничество?",
-    answer:
-      "Оставьте заявку на сайте или позвоните нам. Мы проведём бесплатную консультацию, обсудим ваши цели и предложим оптимальное решение для вашей компании.",
-  },
-  {
-    question: "Сколько времени занимает подготовка проекта?",
-    answer:
-      "Сроки зависят от формата и масштаба проекта. Типовые решения можем запустить за 1-2 недели, комплексные программы — от 1 месяца.",
-  },
-  {
-    question: "Работаете ли вы с компаниями из регионов?",
-    answer:
-      "Да, мы работаем по всей России. Онлайн-форматы доступны для любого региона, а для офлайн-мероприятий готовы выехать к вам.",
-  },
-  {
-    question: "Можно ли адаптировать программу под нашу компанию?",
-    answer:
-      "Да, мы гибко подходим к каждому проекту. Адаптируем контент, форматы и расписание под специфику вашей отрасли и потребности сотрудников.",
-  },
-];
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
@@ -100,7 +78,7 @@ export default async function ServicePage({ params }: PageProps) {
 
   const howWeWorkSteps = service.howWeWork?.map((step, index) => ({
     id: index + 1,
-    title: `Шаг ${index + 1}`,
+    title: `Step ${index + 1}`,
     description: step,
   }));
 
@@ -122,13 +100,13 @@ export default async function ServicePage({ params }: PageProps) {
         />
         {service.facts && <ServiceFacts facts={service.facts} />}
         {howWeWorkSteps && howWeWorkSteps.length > 0 && (
-          <HowWeWork title="Как мы работаем" steps={howWeWorkSteps} />
+          <HowWeWork steps={howWeWorkSteps} serviceId={slug} />
         )}
         {service.examples && service.examples.length > 0 && (
           <ServiceExamples examples={service.examples} />
         )}
         <LeadForm />
-        <FAQ title="Частые вопросы" items={faqItems} />
+        <FAQ translationKey="serviceFaq" />
       </main>
       <Footer data={sections.Footer.data} />
     </>

@@ -1,5 +1,9 @@
+"use client";
+
+import { useMemo } from "react";
 import { Section } from "@/shared/ui/Section";
 import { FeaturedCard, CompactCard } from "./ui";
+import { useTranslation } from "@/shared/i18n";
 
 interface TeamMember {
   id: string;
@@ -17,11 +21,11 @@ interface TeamMember {
 }
 
 interface TeamProps {
-  title: string;
+  title?: string;
   members: TeamMember[];
 }
 
-const FEATURED_TITLES = ["Основатель", "Руководитель НЦФГ"];
+const FEATURED_TITLES = ["Основатель", "Руководитель НЦФГ", "Founder", "Head of NCFL", "CEO", "Генеральный директор"];
 
 function isFeatured(member: TeamMember): boolean {
   const title = member.team?.title ?? "";
@@ -29,12 +33,32 @@ function isFeatured(member: TeamMember): boolean {
 }
 
 export function Team({ title, members }: TeamProps) {
-  const teamMembers = members.filter((m) => m.isTeam && m.team);
+  const { t } = useTranslation();
+
+  const translatedMembers = useMemo(
+    () =>
+      members.map((m) => {
+        const memberT = (t.teamMembers as Record<string, { name: string; position: string }>)[m.fullName];
+        const positionT = m.team?.title
+          ? (t.teamPositions as Record<string, string>)[m.team.title] ?? m.team.title
+          : "";
+        return {
+          ...m,
+          fullName: memberT?.name ?? m.fullName,
+          team: m.team
+            ? { ...m.team, title: memberT?.position ?? positionT }
+            : m.team,
+        };
+      }),
+    [members, t]
+  );
+
+  const teamMembers = translatedMembers.filter((m) => m.isTeam && m.team);
   const featured = teamMembers.filter(isFeatured);
   const rest = teamMembers.filter((m) => !isFeatured(m));
 
   return (
-    <Section id="team" title={title} background="gray">
+    <Section id="team" title={title || t.pages.aboutTeam} background="gray">
       {featured.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-8">
           {featured.map((member) => (
